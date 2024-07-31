@@ -1,0 +1,13 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 0.5rem;
+}
+
+.link:hover {
+  text-decoration-line: underline;
+  text-underline-offset: 0.25rem;
+}

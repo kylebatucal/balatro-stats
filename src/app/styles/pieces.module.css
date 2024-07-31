@@ -1,0 +1,206 @@
+/* Tooltip */
+.tooltipWrapper {
+  position: relative;
+  user-select: none;
+  width: fit-content
+}
+
+.tooltipWrapper:hover {
+  z-index: 1;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: calc(100% + 0.5rem);
+  text-align: center;
+
+  background-color: #3f4a4d;
+  border-color: #dee2ea;
+  border-width: 0.125rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 var(--shadow-length) 0 #919499;
+
+  white-space: nowrap;
+
+  padding: 0.1875rem;
+  padding-bottom: calc(0.1875rem + var(--shadow-length));
+  z-index: 2;
+}
+
+.tooltipTitle {
+  font-size: 125%;
+  line-height: 1.3;
+  padding: 0 0.125rem;
+}
+
+.tooltipDesc {
+  background-color: white;
+  color: var(--black);
+  text-shadow: none;
+
+  border-color: transparent;
+  box-shadow: 0 var(--shadow-length) 0 #ababab;
+
+  padding: 0 0.125rem;
+
+  border-width: 0.125rem;
+  border-radius: 0.5rem;
+}
+
+.tooltipStat {
+  color: #ff8f00;
+}
+
+.tooltipStatus {
+  font-size: 110%;
+  padding-bottom: 0.0625rem;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+  margin-top: calc(0.1875rem + var(--shadow-length));
+  min-width: 5rem;
+  padding: 0 0.75rem;
+  padding-bottom: 0.0625rem;
+  max-width: fit-content;
+}
+
+.tooltipItem {
+  width: fit-content;
+  perspective-origin: center bottom;
+  perspective: var(--card-height);
+}
+
+.tooltipWrapper:has(.tooltipItem:hover) .tooltip {
+  display: block;
+}
+
+/* Hand and Card */
+.hand {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.card {
+  aspect-ratio: 71/95;
+  width: var(--card-width);
+
+  filter: drop-shadow(0 calc(1.5 * var(--shadow-length)) var(--shadow));
+  image-rendering: pixelated;
+  backface-visibility: hidden;
+
+  position: relative;
+  --degrees: 0;
+}
+
+.card:hover {
+  z-index: 1;
+  animation: bounce 100ms ease forwards;
+  will-change: transform;
+}
+
+.topImage {
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.hologram {
+  filter: drop-shadow(0 0 0.25rem rgba(0, 255, 255, 0.8));
+  transform: scale(1.2);
+}
+
+.hologram:hover,
+.undiscovered:hover {
+  animation: 
+    hologramScale 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate, 
+    popoutRotate 2.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate -4.125s;
+}
+
+.legendary {
+  filter: drop-shadow(0 var(--shadow-length) var(--shadow));
+  transform: scale(1.05);
+}
+
+.legendary:hover {
+  animation: 
+    popoutScale 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate, 
+    popoutShadow 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate, 
+    popoutRotate 2.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate -4.125s;
+}
+
+.soul {
+  filter: drop-shadow(0 calc(2 * var(--shadow-length)) var(--shadow));
+}
+
+.soul:hover {
+  animation: 
+    soulScale 1s cubic-bezier(0.37, 0, 0.63, 1) infinite, 
+    popoutRotate 2.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate -4.125s;
+}
+
+/* Chip and Chips */
+.chip {
+  aspect-ratio: 29/29;
+  width: var(--chip-size);
+
+  image-rendering: pixelated;
+  margin: 0.0625rem;
+}
+
+.chip:hover {
+  transform: scale(1.15);
+}
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  justify-items: center;
+  filter: drop-shadow(0 calc(0.75 * var(--shadow-length)) var(--shadow));
+}
+
+/* Animations */
+@keyframes bounce {
+/* Damped Sinusoidal Wave */
+  8% {scale: 1.13}
+  28% {scale: 1.08}
+  48% {scale: 1.12}
+  68% {scale: 1.09}
+  88% {scale: 1.11}
+  100% {scale: 1.1}
+}
+
+@keyframes popoutScale {
+  0% {scale: 1.05}
+  100% {scale: 1.08}
+}
+
+@keyframes popoutRotate {
+  0% {rotate: 4deg}
+  100% {rotate: -4deg}
+}
+
+@keyframes popoutShadow {
+  0% {filter: drop-shadow(0 var(--shadow-length) var(--shadow));}
+  100% {filter: drop-shadow(0 calc(2.5 * var(--shadow-length)) var(--shadow));}
+}
+
+@keyframes hologramScale {
+  0% {scale: 1}
+  100% {scale: 1.1}
+}
+
+@keyframes soulScale {
+  /* Modified version of bounce */
+  0% {scale: 1}
+  4% {scale: 1.13}
+  14% {scale: 1.08}
+  24% {scale: 1.12}
+  34% {scale: 1.09}
+  44% {scale: 1.11}
+  68% {scale: 1.09}
+  88% {scale: 1.1}
+  100% {scale: 1}
+}

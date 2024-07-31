@@ -1,0 +1,25 @@
+.navbar {
+  position: sticky;
+  top: 0.125rem;
+  background-color: #2e3a3c;
+
+  box-shadow: 0 var(--shadow-length) #091113;
+
+  border-radius: 0.5rem;
+  border-width: 0.125rem;
+  border-color: #1e2b2d;
+  
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 10;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+

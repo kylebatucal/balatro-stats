@@ -1,0 +1,96 @@
+.collection {
+  background-color: #3a5055;
+  box-shadow: 0 var(--shadow-length) 0 #777e89;
+
+  border-width: var(--shadow-length);
+  border-radius: 0.5rem;
+  border-color: #b9c2d2;
+  padding: 0 0.5rem;
+  padding-bottom: calc(0.5rem + var(--shadow-length));
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, auto));
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 0.25rem;
+
+  background-color: #1e2b2d;
+  box-shadow: 0 var(--shadow-length) 0 #0b1415;
+  border-radius: 0.5rem;
+  
+  padding-top: 0.25rem;
+  margin-top: 1rem;
+  min-height: var(--card-height)
+}
+
+.list {
+  background-color: #33464b;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  min-height: var(--card-height)
+}
+
+.list .listRow:first-child,
+.list .listRow:last-child,
+.list .graphRow:first-child,
+.list .graphRow:last-child {
+  margin: 0;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  border-radius: 0.5rem;
+  background-color: #2d3e42;
+  padding: 0.25rem;
+  margin: 0.35rem 0;
+}
+
+.graphRow {
+  display: flex;
+  align-items: center;
+
+  border-radius: 0.5rem;
+  background-color: #2d3e42;
+  padding: 0.25rem 0;
+  margin: 0.35rem 0;
+}
+
+.graphBar {
+  border-radius: 0.125rem;
+  height: var(--card-width);
+  transition: width 900ms ease;
+}
+
+.graphNumber {
+  width: 3rem;
+  text-align: center;
+  color: var(--orange)
+}
+
+.graphLegend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.graphSquare {
+  background-color: #ff8f00;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
+  margin: 0 0.25rem;
+}
+

@@ -3,31 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  font-size: calc(18px);
+  line-height: 1.15;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --card-width: 71px;
+  --card-height: calc(var(--card-width) * 1.338);
+  --chip-size: 29px;
+
+  --shadow-length: 0.125rem;
+  --text-shadow: 0.0625rem 0.0625rem var(--shadow);
+
+  --button-width: 6rem;
+
+  text-shadow: var(--text-shadow);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: white;
+  background: #438368;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+main {
+  margin: 0 auto;
+  max-width: calc(var(--card-width) * 5.75);
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: calc(18px + 1.25vmin);
+    --card-width: calc(142px + 1vmin);
+    --chip-size: calc(58px + 0.5vmin)
   }
 }

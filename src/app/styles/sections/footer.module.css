@@ -1,0 +1,10 @@
+.footer {
+  margin-top: 10vh;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.link:hover {
+  text-decoration-line: underline;
+  text-underline-offset: 0.25rem;
+}

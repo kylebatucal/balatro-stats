@@ -1,0 +1,71 @@
+:root {
+  --shadow: rgba(0, 0, 20, 0.5);
+  --black: #4f6367;
+  --white: white;
+  --red: #ff4c40;
+  --blue: #0093ff;
+  --yellow: #f5b244;
+  --green: #429f79;
+  --orange: #ff8f00;
+
+  --Common: #0093ff;
+  --Uncommon: #35bd86;
+  --Rare: #ff4c40;
+  --Legendary: #ab5bb5;
+
+  --Joker: #5f7e85;
+  --Deck: #525db0;
+  --Tarot: #9e74ce;
+  --Planet: #00a7ca;
+  --Spectral: #2e76fd;
+  --Voucher: #ff5611;
+}
+
+/* Using a class is necessary if you want the hover selector to work */
+.red {
+  background-color: var(--red);
+}
+
+.red:hover {
+  background-color: #a02721;
+}
+
+.redFocus:focus {
+  background-color: #a02721;
+}
+
+.blue {
+  background-color: var(--blue)
+}
+
+.blue:hover {
+  background-color: #0057a1;
+}
+
+.blueFocus:focus {
+  background-color: #0057a1;
+}
+
+.orange {
+  background-color: #ff8f00;
+}
+
+.orange:hover {
+  background-color: #a05b00;  
+}
+
+.orangeFocus:focus {
+  background-color: #a05b00;  
+}
+
+.green {
+  background-color: #429f79;
+}
+
+.green:hover {
+  background-color: #215f46;
+}
+
+.greenFocus:focus {
+  background-color: #215f46;
+}
