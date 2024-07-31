@@ -10,7 +10,7 @@ export default function NotFound() {
   const joker = {
     name: '404',
     image: `url(/images/cards/Jokers.png) ${jokerSprites.undiscovered} / 1000%`,
-    topImage: `url(/images/cards/Enhancers.png) ${jokerExtraSprites.undiscovered} / 700%`,
+    topImage: `url(/images/cards/Enhancers.png) ${jokerExtraSprites.undiscovered} / 700% 500%`,
   }
 
   const sounds = {

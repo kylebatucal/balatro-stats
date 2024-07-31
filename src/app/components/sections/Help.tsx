@@ -45,15 +45,12 @@ export default function Help({
             <div>
               Windows:
               <ol className={styles.list}>
-                <li>
-                  Press <Highlight>[Windows Key]</Highlight> +{' '}
-                  <Highlight>[R]</Highlight>
-                </li>
+                <li>Open File Explorer and click the address bar</li>
                 <li>
                   Type: <Highlight color={'blue'}>%AppData%/Balatro</Highlight>
                 </li>
                 <li>
-                  Press <Highlight>[OK]</Highlight>
+                  Press <Highlight>[Enter]</Highlight>
                 </li>
                 <li>Choose from folder 1, 2, or 3</li>
               </ol>
@@ -83,14 +80,12 @@ export default function Help({
             <div>
               Steam Deck:
               <ol className={styles.list}>
-                {/* <li>Open Terminal</li> */}
                 <li style={{ overflowWrap: 'anywhere' }}>
                   Navigate to:{' '}
                   <Highlight color={'blue'}>
                     ~/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro
                   </Highlight>
                 </li>
-                {/* <li>Press <Highlight>[Enter]</Highlight></li> */}
                 <li>Choose from folder 1, 2, or 3</li>
               </ol>
             </div>

@@ -31,7 +31,9 @@ export function useToImage(
         }
       })
       .catch((err) => {
-        alert(`ERROR: too many cards to save as image. Use Chrome to fix this.`)
+        alert(
+          `ERROR: too many cards to save as image. Filter out cards or use Chrome to fix this.`,
+        )
         console.error(err)
       })
   }, [filename, newTab, ref])

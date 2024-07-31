@@ -42,20 +42,20 @@ export default function Page() {
 
   // Initalize sounds
   // This prevents us creating a new sound function every time we create a component using a sound
-  const [buttonSound] = useSound('/sounds/button.ogg', {
+  const [buttonSound] = useSound('/sounds/button.mp3', {
     volume: 0.3,
     playbackRate: 0.95,
     soundEnabled: settings.soundEnabled.enabled,
   })
-  const [cardSound] = useSound('/sounds/paper1.ogg', {
+  const [cardSound] = useSound('/sounds/paper1.mp3', {
     volume: 0.5,
     soundEnabled: settings.soundEnabled.enabled,
   })
-  const [chipSound] = useSound('/sounds/chips1.ogg', {
+  const [chipSound] = useSound('/sounds/chips1.mp3', {
     volume: 0.3,
     soundEnabled: settings.soundEnabled.enabled,
   })
-  const [tarotSound] = useSound('/sounds/tarot2.ogg', {
+  const [tarotSound] = useSound('/sounds/tarot2.mp3', {
     volume: 0.66,
     soundEnabled: settings.soundEnabled.enabled,
   })

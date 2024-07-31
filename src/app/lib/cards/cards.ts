@@ -27,10 +27,10 @@ function initalizeJoker(key: string): CardType {
     wins: {},
     losses: {},
     count: 0,
-    image: `url(/images/cards/Jokers.png) ${jokerSprites[key]} / 1000%`,
+    image: `url(/images/cards/Jokers.png) ${jokerSprites[key]} / 1000% 1600%`,
     topImage:
       jokerExtraSprites[key] &&
-      `url(/images/cards/Jokers.png) ${jokerExtraSprites[key]} / 1000%`,
+      `url(/images/cards/Jokers.png) ${jokerExtraSprites[key]} / 1000% 1600%`,
     status: jokerRarity[key],
   }
 }
