@@ -1,5 +1,12 @@
 import styles from '@/app/styles/inputs.module.css'
-import { Dispatch, RefObject, SetStateAction, useContext, useEffect, useRef } from 'react'
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react'
 import { soundContext } from '@/app/lib/context'
 
 export default function Combobox({
@@ -29,8 +36,9 @@ export default function Combobox({
     if (optionsRef.current) {
       const currentIndex = options.indexOf(current)
       if (current && currentIndex != -1 && popupOpen) {
-        const optionsNode = optionsRef.current.querySelectorAll('li')[currentIndex]
-        optionsNode.scrollIntoView({block: 'nearest'})
+        const optionsNode =
+          optionsRef.current.querySelectorAll('li')[currentIndex]
+        optionsNode.scrollIntoView({ block: 'nearest' })
       }
     }
   }, [options, current, popupOpen])
@@ -56,11 +64,11 @@ export default function Combobox({
           gridTemplateRows: `${popupOpen ? '1fr' : '0fr'}`,
         }}
       >
-        <ul 
+        <ul
           className={styles.options}
           ref={optionsRef}
           style={{
-            padding: popupOpen ? options.length ? '0.5rem' : 0 : '0 0.5rem',
+            padding: popupOpen ? (options.length ? '0.5rem' : 0) : '0 0.5rem',
           }}
         >
           {options.map((option, i) => {
@@ -78,7 +86,9 @@ export default function Combobox({
                     inputRef.current.focus()
                   }
                 }}
-                onPointerEnter={() => playCardSound({playBackRate: Math.random()*0.2 + 0.9})}
+                onPointerEnter={() =>
+                  playCardSound({ playBackRate: Math.random() * 0.2 + 0.9 })
+                }
               >
                 {option}
               </li>

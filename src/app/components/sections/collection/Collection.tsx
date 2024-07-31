@@ -1,18 +1,31 @@
 import { useContext, useState } from 'react'
 import styles from '@/app/styles/sections/collection.module.css'
-import { CardType, Profile } from "@/app/lib/types"
+import { CardType, Profile } from '@/app/lib/types'
 import Button from '@/app/components/inputs/Button'
-import { filterCards, getHighestStake, sumStakes, useToImage } from '@/app/lib/utils'
+import {
+  filterCards,
+  getHighestStake,
+  sumStakes,
+  useToImage,
+} from '@/app/lib/utils'
 import InputContainer from '../../inputs/InputContainer'
 import Select from '../../inputs/Select'
 import Search from '../../inputs/Search'
-import { initalConsumables, initalDecks, initalJokers, initalVouchers } from '../../../lib/cards/cards'
+import {
+  initalConsumables,
+  initalDecks,
+  initalJokers,
+  initalVouchers,
+} from '../../../lib/cards/cards'
 import Grid from './Grid'
 import List from './List'
 import Graph from './Graph'
 import Filters from '../../inputs/Filters'
 import { useImmer } from 'use-immer'
-import { baseVoucherNames, upgradedVoucherNames } from '../../../lib/cards/cardKeys'
+import {
+  baseVoucherNames,
+  upgradedVoucherNames,
+} from '../../../lib/cards/cardKeys'
 import { settingsContext } from '@/app/lib/context'
 
 interface TabType {
@@ -26,14 +39,32 @@ interface TabType {
 const tabs: Record<string, TabType> = {
   Jokers: {
     name: 'Jokers',
-    sorts: ['Game Order', 'Name', 'Wins', 'Win %', 'Wins per Loss', 'Losses', 'Rounds', 'Rarity', 'Stake'],
+    sorts: [
+      'Game Order',
+      'Name',
+      'Wins',
+      'Win %',
+      'Wins per Loss',
+      'Losses',
+      'Rounds',
+      'Rarity',
+      'Stake',
+    ],
     graphs: ['Rounds', 'Wins', 'Win %', 'Wins per Loss', 'Losses'],
     filters: ['Stake', 'Rarity'],
     views: ['Grid', 'List', 'Graph'],
   },
   Decks: {
     name: 'Decks',
-    sorts: ['Game Order', 'Name', 'Wins', 'Win %', 'Wins per Loss', 'Losses', 'Stake'],
+    sorts: [
+      'Game Order',
+      'Name',
+      'Wins',
+      'Win %',
+      'Wins per Loss',
+      'Losses',
+      'Stake',
+    ],
     graphs: ['Wins', 'Win %', 'Wins per Loss', 'Losses'],
     filters: ['Stake'],
     views: ['Grid', 'List', 'Graph'],
@@ -56,122 +87,140 @@ const tabs: Record<string, TabType> = {
 
 interface FilterType {
   name: string
-  filters: Record<string, {
-    filter: (card: CardType) => boolean
-    enabled: boolean
-  }>
-} 
+  filters: Record<
+    string,
+    {
+      filter: (card: CardType) => boolean
+      enabled: boolean
+    }
+  >
+}
 
 const cardFilters: Record<string, FilterType> = {
   Stake: {
     name: 'Stake',
     filters: {
-      'None': {
-        filter: (card: CardType) => card.wins ? sumStakes(card.wins) == 0 : false,
-        enabled: false
+      None: {
+        filter: (card: CardType) =>
+          card.wins ? sumStakes(card.wins) == 0 : false,
+        enabled: false,
       },
       'White Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 1 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 1 : false,
+        enabled: false,
       },
       'Red Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 2 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 2 : false,
+        enabled: false,
       },
       'Green Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 3 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 3 : false,
+        enabled: false,
       },
       'Black Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 4 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 4 : false,
+        enabled: false,
       },
       'Blue Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 5 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 5 : false,
+        enabled: false,
       },
       'Purple Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 6 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 6 : false,
+        enabled: false,
       },
       'Orange Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 7 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 7 : false,
+        enabled: false,
       },
       'Gold Stake': {
-        filter: (card: CardType) => card.wins ? getHighestStake(card.wins) == 8 : false,
-        enabled: false
+        filter: (card: CardType) =>
+          card.wins ? getHighestStake(card.wins) == 8 : false,
+        enabled: false,
       },
-    }
+    },
   },
   Rarity: {
     name: 'Rarity',
     filters: {
       Common: {
         filter: (card: CardType) => card.status == 'Common',
-        enabled: false
+        enabled: false,
       },
       Uncommon: {
         filter: (card: CardType) => card.status == 'Uncommon',
-        enabled: false
+        enabled: false,
       },
       Rare: {
         filter: (card: CardType) => card.status == 'Rare',
-        enabled: false
+        enabled: false,
       },
       Legendary: {
         filter: (card: CardType) => card.status == 'Legendary',
-        enabled: false
+        enabled: false,
       },
-    }
+    },
   },
   Type: {
     name: 'Type',
     filters: {
       Tarot: {
         filter: (card: CardType) => card.status == 'Tarot',
-        enabled: false
+        enabled: false,
       },
       Planet: {
         filter: (card: CardType) => card.status == 'Planet',
-        enabled: false
+        enabled: false,
       },
       Spectral: {
         filter: (card: CardType) => card.status == 'Spectral',
-        enabled: false
+        enabled: false,
       },
-    }
+    },
   },
   Tier: {
     name: 'Tier',
     filters: {
       Base: {
-        filter: (card: CardType) => {return baseVoucherNames.includes(card.name)},
-        enabled: false
+        filter: (card: CardType) => {
+          return baseVoucherNames.includes(card.name)
+        },
+        enabled: false,
       },
       Upgraded: {
-        filter: (card: CardType) => {return upgradedVoucherNames.includes(card.name)},
-        enabled: false
+        filter: (card: CardType) => {
+          return upgradedVoucherNames.includes(card.name)
+        },
+        enabled: false,
       },
-    }
-  }
+    },
+  },
 }
 
-export default function Collection(
-{
-  profile
-}: {
-  profile: Profile
-}) {
+export default function Collection({ profile }: { profile: Profile }) {
   const [tab, setTab] = useState(tabs['Jokers'])
   const [search, setSearch] = useState('')
   const [view, setView] = useState(tab.views[0])
   const sorts = view == 'Graph' ? tab.graphs : tab.sorts
   const [sort, setSort] = useState(sorts[0])
   const [filters, setFilters] = useImmer(cardFilters)
-  const activeFilters = tab.filters.map((group) => Object.values(filters[group].filters).filter(({enabled}) => enabled).map(({filter}) => filter))
+  const activeFilters = tab.filters.map((group) =>
+    Object.values(filters[group].filters)
+      .filter(({ enabled }) => enabled)
+      .map(({ filter }) => filter),
+  )
   const settings = useContext(settingsContext)
-  const [ref, savePNG] = useToImage(tab.name.toLowerCase(), settings.saveImageinNewTab.enabled)
+  const [ref, savePNG] = useToImage(
+    tab.name.toLowerCase(),
+    settings.saveImageinNewTab.enabled,
+  )
 
   if (!tab.views.includes(view)) {
     setView(tab.views[1])
@@ -189,7 +238,7 @@ export default function Collection(
 
   const decks = initalDecks()
   Object.entries(profile.deck_usage).forEach(([deck, stats]) => {
-    decks[deck].wins = stats.wins;
+    decks[deck].wins = stats.wins
     decks[deck].losses = stats.losses
   })
 
@@ -204,7 +253,7 @@ export default function Collection(
   })
 
   const cards = (() => {
-    switch(tab.name) {
+    switch (tab.name) {
       default:
       case 'Jokers':
         return Object.values(jokers)
@@ -220,13 +269,13 @@ export default function Collection(
   const filteredCards = filterCards(cards, search, sort, activeFilters)
 
   const insides = (() => {
-    switch(view) {
+    switch (view) {
       case 'Grid':
-        return <Grid cards={filteredCards} tab={tab.name}/>
+        return <Grid cards={filteredCards} tab={tab.name} />
       case 'List':
-        return <List cards={filteredCards}/>
+        return <List cards={filteredCards} />
       case 'Graph':
-        return <Graph cards={filteredCards} tab={tab.name} sort={sort}/>
+        return <Graph cards={filteredCards} tab={tab.name} sort={sort} />
     }
   })()
 
@@ -236,10 +285,10 @@ export default function Collection(
         <div className={styles.tabs}>
           {Object.keys(tabs).map((tabName) => {
             return (
-              <Button 
-                key={tabName} 
-                name={tabName} 
-                active={tab.name == tabName} 
+              <Button
+                key={tabName}
+                name={tabName}
+                active={tab.name == tabName}
                 color={'red'}
                 callback={() => setTab(tabs[tabName])}
               />
@@ -249,34 +298,53 @@ export default function Collection(
 
         <>
           <InputContainer label={'Search'}>
-            <Search options={cards.map((card) => card.name)} current={search} setCurrent={setSearch} placeholder={tab.name}/>
+            <Search
+              options={cards.map((card) => card.name)}
+              current={search}
+              setCurrent={setSearch}
+              placeholder={tab.name}
+            />
           </InputContainer>
 
           <InputContainer label={'Sort'}>
-            <Select options={sorts} current={sort} setCurrent={setSort} color={'orange'}/>
+            <Select
+              options={sorts}
+              current={sort}
+              setCurrent={setSort}
+              color={'orange'}
+            />
           </InputContainer>
 
           <InputContainer label={'Filter'}>
-            <Filters filters={tab.filters.map((group) => filters[group])} setFilters={setFilters}/>
+            <Filters
+              filters={tab.filters.map((group) => filters[group])}
+              setFilters={setFilters}
+            />
           </InputContainer>
 
           <InputContainer label={'View'}>
-            <Select options={tab.views} current={view} setCurrent={setView} color={'green'}/>
+            <Select
+              options={tab.views}
+              current={view}
+              setCurrent={setView}
+              color={'green'}
+            />
           </InputContainer>
         </>
-      
+
         {insides}
       </div>
 
-      <div 
+      <div
         style={{
-          paddingBottom: '0.5rem'
-        }}>
+          paddingBottom: '0.5rem',
+        }}
+      >
         <Button
           name={'Save as Image'}
           color={'blue'}
           style={{
-            borderRadius: '0 0 0.5rem 0.5rem'
+            borderRadius: '0 0 0.5rem 0.5rem',
           }}
           callback={savePNG}
         />

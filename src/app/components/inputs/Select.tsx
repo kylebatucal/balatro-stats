@@ -1,10 +1,18 @@
 import styles from '@/app/styles/inputs.module.css'
-import { useState, useContext, useEffect, useRef, KeyboardEvent, Dispatch, SetStateAction } from 'react'
+import {
+  useState,
+  useContext,
+  useEffect,
+  useRef,
+  KeyboardEvent,
+  Dispatch,
+  SetStateAction,
+} from 'react'
 import { soundContext } from '@/app/lib/context'
 import Combobox from './Combobox'
 
 function getAction(e: KeyboardEvent, popupOpen: boolean) {
-  const {key, altKey, ctrlKey, metaKey} = e
+  const { key, altKey, ctrlKey, metaKey } = e
   if (altKey) {
     if (key == 'ArrowUp') {
       if (popupOpen) {
@@ -17,7 +25,7 @@ function getAction(e: KeyboardEvent, popupOpen: boolean) {
     }
   }
 
-  switch(key) {
+  switch (key) {
     case 'Escape':
       return 'close'
     case ' ':
@@ -50,7 +58,7 @@ export default function Select({
   options,
   current,
   setCurrent,
-  color
+  color,
 }: {
   options: string[]
   current: string
@@ -67,7 +75,7 @@ export default function Select({
 
     return () => clearTimeout(timeout)
   }, [searchString])
-  
+
   const inputRef = useRef<HTMLDivElement>(null)
 
   const sounds = useContext(soundContext)
@@ -91,7 +99,7 @@ export default function Select({
           const action = getAction(e, popupOpen)
           let newIndex = 0
 
-          switch(action) {
+          switch (action) {
             case 'open':
               e.preventDefault()
               if (!popupOpen) {
@@ -109,25 +117,35 @@ export default function Select({
             case 'first':
             case 'last':
               e.preventDefault()
-              playCardSound({playbackRate: Math.random()*0.2 + 0.9})
+              playCardSound({ playbackRate: Math.random() * 0.2 + 0.9 })
               break
           }
 
-          switch(action) {
+          switch (action) {
             case 'type':
               setPopupOpen(true)
 
               const newSearchString = searchString + e.key
               setSearchString(newSearchString)
 
-              let matches = options.filter((option) => option.toLowerCase().startsWith(newSearchString[0]))
+              let matches = options.filter((option) =>
+                option.toLowerCase().startsWith(newSearchString[0]),
+              )
 
               if (matches.length == 0) {
                 return
-              } else if (newSearchString.split('').every((letter) => letter == newSearchString[0])) {
-                setCurrent(matches[(newSearchString.length - 1) % matches.length])
+              } else if (
+                newSearchString
+                  .split('')
+                  .every((letter) => letter == newSearchString[0])
+              ) {
+                setCurrent(
+                  matches[(newSearchString.length - 1) % matches.length],
+                )
               } else {
-                matches = options.filter((option) => option.toLowerCase().startsWith(newSearchString))
+                matches = options.filter((option) =>
+                  option.toLowerCase().startsWith(newSearchString),
+                )
                 if (matches[0]) {
                   setCurrent(matches[0])
                 }
@@ -141,11 +159,14 @@ export default function Select({
               setPopupOpen(false)
               break
             case 'up':
-              newIndex = Math.max(options.indexOf(current) - 1 , 0)
+              newIndex = Math.max(options.indexOf(current) - 1, 0)
               setCurrent(options[newIndex])
               break
             case 'down':
-              newIndex = Math.min(options.indexOf(current) + 1, options.length - 1)
+              newIndex = Math.min(
+                options.indexOf(current) + 1,
+                options.length - 1,
+              )
               setCurrent(options[newIndex])
               break
             case 'first':

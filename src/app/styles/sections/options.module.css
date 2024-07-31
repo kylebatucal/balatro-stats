@@ -46,7 +46,7 @@
 .subSections {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem
+  gap: 0.5rem;
 }
 
 .list {
@@ -55,22 +55,32 @@
 }
 
 .link {
-  color: var(--blue)
+  color: var(--blue);
 }
 
 .link:hover {
   color: #54bfff;
   text-decoration-line: underline;
   text-underline-offset: 0.25rem;
-} 
+}
 
 @keyframes fadeIn {
-  0% {opacity: 0}
-  100% {opacity: 1}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slide {
-  0% {top: 250%}
-  66% {top: 48%}
-  100% {top: 50%}
+  0% {
+    top: 250%;
+  }
+  66% {
+    top: 48%;
+  }
+  100% {
+    top: 50%;
+  }
 }

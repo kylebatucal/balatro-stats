@@ -2,7 +2,7 @@
 .tooltipWrapper {
   position: relative;
   user-select: none;
-  width: fit-content
+  width: fit-content;
 }
 
 .tooltipWrapper:hover {
@@ -114,8 +114,8 @@
 
 .hologram:hover,
 .undiscovered:hover {
-  animation: 
-    hologramScale 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate, 
+  animation:
+    hologramScale 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate,
     popoutRotate 2.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate -4.125s;
 }
 
@@ -125,9 +125,9 @@
 }
 
 .legendary:hover {
-  animation: 
-    popoutScale 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate, 
-    popoutShadow 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate, 
+  animation:
+    popoutScale 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate,
+    popoutShadow 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate,
     popoutRotate 2.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate -4.125s;
 }
 
@@ -136,8 +136,8 @@
 }
 
 .soul:hover {
-  animation: 
-    soulScale 1s cubic-bezier(0.37, 0, 0.63, 1) infinite, 
+  animation:
+    soulScale 1s cubic-bezier(0.37, 0, 0.63, 1) infinite,
     popoutRotate 2.75s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate -4.125s;
 }
 
@@ -163,44 +163,90 @@
 
 /* Animations */
 @keyframes bounce {
-/* Damped Sinusoidal Wave */
-  8% {scale: 1.13}
-  28% {scale: 1.08}
-  48% {scale: 1.12}
-  68% {scale: 1.09}
-  88% {scale: 1.11}
-  100% {scale: 1.1}
+  /* Damped Sinusoidal Wave */
+  8% {
+    scale: 1.13;
+  }
+  28% {
+    scale: 1.08;
+  }
+  48% {
+    scale: 1.12;
+  }
+  68% {
+    scale: 1.09;
+  }
+  88% {
+    scale: 1.11;
+  }
+  100% {
+    scale: 1.1;
+  }
 }
 
 @keyframes popoutScale {
-  0% {scale: 1.05}
-  100% {scale: 1.08}
+  0% {
+    scale: 1.05;
+  }
+  100% {
+    scale: 1.08;
+  }
 }
 
 @keyframes popoutRotate {
-  0% {rotate: 4deg}
-  100% {rotate: -4deg}
+  0% {
+    rotate: 4deg;
+  }
+  100% {
+    rotate: -4deg;
+  }
 }
 
 @keyframes popoutShadow {
-  0% {filter: drop-shadow(0 var(--shadow-length) var(--shadow));}
-  100% {filter: drop-shadow(0 calc(2.5 * var(--shadow-length)) var(--shadow));}
+  0% {
+    filter: drop-shadow(0 var(--shadow-length) var(--shadow));
+  }
+  100% {
+    filter: drop-shadow(0 calc(2.5 * var(--shadow-length)) var(--shadow));
+  }
 }
 
 @keyframes hologramScale {
-  0% {scale: 1}
-  100% {scale: 1.1}
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.1;
+  }
 }
 
 @keyframes soulScale {
   /* Modified version of bounce */
-  0% {scale: 1}
-  4% {scale: 1.13}
-  14% {scale: 1.08}
-  24% {scale: 1.12}
-  34% {scale: 1.09}
-  44% {scale: 1.11}
-  68% {scale: 1.09}
-  88% {scale: 1.1}
-  100% {scale: 1}
+  0% {
+    scale: 1;
+  }
+  4% {
+    scale: 1.13;
+  }
+  14% {
+    scale: 1.08;
+  }
+  24% {
+    scale: 1.12;
+  }
+  34% {
+    scale: 1.09;
+  }
+  44% {
+    scale: 1.11;
+  }
+  68% {
+    scale: 1.09;
+  }
+  88% {
+    scale: 1.1;
+  }
+  100% {
+    scale: 1;
+  }
 }

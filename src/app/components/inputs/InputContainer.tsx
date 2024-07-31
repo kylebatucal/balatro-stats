@@ -3,16 +3,14 @@ import React from 'react'
 
 export default function InputContainer({
   label,
-  children
+  children,
 }: {
   label: string
   children: React.ReactNode
 }) {
   return (
     <div className={styles.inputContainer}>
-      <div className={styles.inputContainerLabel}>
-        {label}
-      </div>
+      <div className={styles.inputContainerLabel}>{label}</div>
       {children}
     </div>
   )

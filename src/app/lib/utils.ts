@@ -1,14 +1,17 @@
-import { toBlob, toPng } from "html-to-image";
-import { MutableRefObject, useCallback, useRef } from "react";
-import { CardType } from "./types";
+import { toBlob } from 'html-to-image'
+import { MutableRefObject, useCallback, useRef } from 'react'
+import { CardType } from './types'
 import FileSaver from 'file-saver'
 
 export function numberWithCommas(number: number) {
   // https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-export function useToImage(filename: string, newTab?: boolean): [MutableRefObject<null>, () => void] {
+export function useToImage(
+  filename: string,
+  newTab?: boolean,
+): [MutableRefObject<null>, () => void] {
   const ref = useRef(null)
   const saveImage = useCallback(() => {
     if (ref.current === null) {
@@ -31,7 +34,6 @@ export function useToImage(filename: string, newTab?: boolean): [MutableRefObjec
         alert(`ERROR: too many cards to save as image. Use Chrome to fix this.`)
         console.error(err)
       })
-
   }, [filename, newTab, ref])
   return [ref, saveImage]
 }
@@ -41,27 +43,39 @@ export function sumStakes(stakes: Record<number, number>) {
 }
 
 export function getHighestStake(stakes: Record<number, number>) {
-  return Object.keys(stakes).length != 0 ? Math.max(...Object.keys(stakes).map((key) => parseInt(key, 10))) : 0
+  return Object.keys(stakes).length != 0
+    ? Math.max(...Object.keys(stakes).map((key) => parseInt(key, 10)))
+    : 0
 }
 
-export function filterCards(cards: CardType[], search: string, sort: string, filters: ((card: CardType) => boolean)[][]) {
+export function filterCards(
+  cards: CardType[],
+  search: string,
+  sort: string,
+  filters: ((card: CardType) => boolean)[][],
+) {
   let filteredCards = cards
 
   if (filters.length) {
     filters.forEach((group) => {
       if (group.length) {
-        const combinedFilters = (card: CardType) => group.some(filter => filter(card))
+        const combinedFilters = (card: CardType) =>
+          group.some((filter) => filter(card))
         filteredCards = filteredCards.filter(combinedFilters)
       }
     })
   }
 
   // Check for exact match first
-  const match = filteredCards.filter((card) => card.name.toLowerCase() == search.toLowerCase())
+  const match = filteredCards.filter(
+    (card) => card.name.toLowerCase() == search.toLowerCase(),
+  )
   if (match.length) {
     return match
   } else {
-    filteredCards = filteredCards.filter((card) => card.name.toLowerCase().includes(search.toLowerCase()))
+    filteredCards = filteredCards.filter((card) =>
+      card.name.toLowerCase().includes(search.toLowerCase()),
+    )
   }
 
   filteredCards = sortCards(filteredCards, sort)
@@ -69,11 +83,11 @@ export function filterCards(cards: CardType[], search: string, sort: string, fil
 }
 
 function sortCards(cards: CardType[], sort: string) {
-  switch(sort) {
+  switch (sort) {
     default:
     case 'Game Order':
       return cards
-    
+
     case 'Name':
       return cards.toSorted((a, b) => {
         if (a.name < b.name) {
@@ -83,14 +97,14 @@ function sortCards(cards: CardType[], sort: string) {
         }
         return 0
       })
-    
+
     case 'Wins':
       return cards.toSorted((a, b) => {
         const aWins = a.wins ? sumStakes(a.wins) : 0
         const bWins = b.wins ? sumStakes(b.wins) : 0
         return bWins - aWins
       })
-    
+
     case 'Win %':
       return cards.toSorted((a, b) => {
         const aWins = a.wins ? sumStakes(a.wins) : 0
@@ -109,7 +123,7 @@ function sortCards(cards: CardType[], sort: string) {
             return -1
           } else if (aWins < bWins) {
             return 1
-          // if 0 = aWins = bWins
+            // if 0 = aWins = bWins
           } else if (aLosses > bLosses) {
             return -1
           } else if (aLosses < bLosses) {
@@ -118,7 +132,7 @@ function sortCards(cards: CardType[], sort: string) {
         }
         return bWinPercentage - aWinPercentage
       })
-    
+
     case 'Wins per Loss':
       return cards.toSorted((a, b) => {
         const aWins = a.wins ? sumStakes(a.wins) : 0
@@ -150,14 +164,14 @@ function sortCards(cards: CardType[], sort: string) {
         }
         return 0
       })
-    
+
     case 'Losses':
       return cards.toSorted((a, b) => {
         const aLosses = a.losses ? sumStakes(a.losses) : 0
         const bLosses = b.losses ? sumStakes(b.losses) : 0
         return bLosses - aLosses
       })
-    
+
     case 'Rounds':
     case 'Uses':
     case 'Redeems':
@@ -179,13 +193,17 @@ function sortCards(cards: CardType[], sort: string) {
           return difference
         }
       })
-    
+
     case 'Stake':
       return cards.toSorted((a, b) => {
-        const aStakes = a.wins ? Object.keys(a.wins).map((key) => parseInt(key, 10)) : [0]
+        const aStakes = a.wins
+          ? Object.keys(a.wins).map((key) => parseInt(key, 10))
+          : [0]
         const aHighestStake = Math.max(...aStakes)
 
-        const bStakes = b.wins ? Object.keys(b.wins).map((key) => parseInt(key, 10)) : [0]
+        const bStakes = b.wins
+          ? Object.keys(b.wins).map((key) => parseInt(key, 10))
+          : [0]
         const bHighestStake = Math.max(...bStakes)
 
         return bHighestStake - aHighestStake

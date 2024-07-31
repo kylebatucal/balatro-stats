@@ -1,10 +1,10 @@
 import styles from '@/app/styles/sections/options.module.css'
-import { Dispatch, ReactNode, SetStateAction } from "react";
-import Button from '../inputs/Button';
+import { Dispatch, ReactNode, SetStateAction } from 'react'
+import Button from '../inputs/Button'
 
 function Highlight({
   children,
-  color
+  color,
 }: {
   children: ReactNode
   color?: string
@@ -14,9 +14,11 @@ function Highlight({
   }
 
   return (
-    <span style={{
-      color: `var(--${color})`
-    }}>
+    <span
+      style={{
+        color: `var(--${color})`,
+      }}
+    >
       {children}
     </span>
   )
@@ -32,9 +34,7 @@ export default function Help({
   }
   return (
     <>
-      <div className={styles.background}
-        onClick={exitMenu}
-      />
+      <div className={styles.background} onClick={exitMenu} />
 
       <div className={styles.options}>
         <div className={styles.section}>
@@ -45,9 +45,16 @@ export default function Help({
             <div>
               Windows:
               <ol className={styles.list}>
-                <li>Press <Highlight>[Windows Key]</Highlight> + <Highlight>[R]</Highlight></li>
-                <li>Type: <Highlight color={'blue'}>%AppData%/Balatro</Highlight></li>
-                <li>Press <Highlight>[OK]</Highlight></li>
+                <li>
+                  Press <Highlight>[Windows Key]</Highlight> +{' '}
+                  <Highlight>[R]</Highlight>
+                </li>
+                <li>
+                  Type: <Highlight color={'blue'}>%AppData%/Balatro</Highlight>
+                </li>
+                <li>
+                  Press <Highlight>[OK]</Highlight>
+                </li>
                 <li>Choose from folder 1, 2, or 3</li>
               </ol>
             </div>
@@ -56,9 +63,19 @@ export default function Help({
               MacOS:
               <ol className={styles.list}>
                 <li>Open Finder</li>
-                <li>Press <Highlight>[Shift]</Highlight> + <Highlight>[Command]</Highlight> + <Highlight>[G]</Highlight></li>
-                <li>Type: <Highlight color={'blue'}>~/Library/Application Support/Balatro</Highlight></li>
-                <li>Press <Highlight>[Enter]</Highlight></li>
+                <li>
+                  Press <Highlight>[Shift]</Highlight> +{' '}
+                  <Highlight>[Command]</Highlight> + <Highlight>[G]</Highlight>
+                </li>
+                <li>
+                  Type:{' '}
+                  <Highlight color={'blue'}>
+                    ~/Library/Application Support/Balatro
+                  </Highlight>
+                </li>
+                <li>
+                  Press <Highlight>[Enter]</Highlight>
+                </li>
                 <li>Choose from folder 1, 2, or 3</li>
               </ol>
             </div>
@@ -67,18 +84,23 @@ export default function Help({
               Steam Deck:
               <ol className={styles.list}>
                 {/* <li>Open Terminal</li> */}
-                <li style={{overflowWrap: 'anywhere'}}>Navigate to: <Highlight color={'blue'}>~/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro</Highlight></li>
+                <li style={{ overflowWrap: 'anywhere' }}>
+                  Navigate to:{' '}
+                  <Highlight color={'blue'}>
+                    ~/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro
+                  </Highlight>
+                </li>
                 {/* <li>Press <Highlight>[Enter]</Highlight></li> */}
                 <li>Choose from folder 1, 2, or 3</li>
               </ol>
             </div>
           </div>
         </div>
-        
-        <Button 
-          name={'Back'} 
+
+        <Button
+          name={'Back'}
           color={'orange'}
-          style={{width: '100%'}}
+          style={{ width: '100%' }}
           callback={exitMenu}
         />
       </div>

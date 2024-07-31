@@ -24,10 +24,10 @@
   background-color: #1e2b2d;
   box-shadow: 0 var(--shadow-length) 0 #0b1415;
   border-radius: 0.5rem;
-  
+
   padding-top: 0.25rem;
   margin-top: 1rem;
-  min-height: var(--card-height)
+  min-height: var(--card-height);
 }
 
 .list {
@@ -35,7 +35,7 @@
   padding: 0.5rem;
   border-radius: 0.5rem;
   margin-top: 1rem;
-  min-height: var(--card-height)
+  min-height: var(--card-height);
 }
 
 .list .listRow:first-child,
@@ -76,7 +76,7 @@
 .graphNumber {
   width: 3rem;
   text-align: center;
-  color: var(--orange)
+  color: var(--orange);
 }
 
 .graphLegend {
@@ -93,4 +93,3 @@
   border-radius: 0.125rem;
   margin: 0 0.25rem;
 }
-

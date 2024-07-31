@@ -28,7 +28,7 @@ function getStat(card: CardType, sort: string) {
 }
 
 function getTotal(cards: CardType[], sort: string) {
-  let total;
+  let total
   const card = cards[0]
   switch (sort) {
     default:
@@ -45,7 +45,7 @@ function getTotal(cards: CardType[], sort: string) {
     case 'Wins per Loss':
       var wins = card.wins ? sumStakes(card.wins) : 0
       var losses = card.losses ? sumStakes(card.losses) : 0
-      total = (wins / (losses || 1))
+      total = wins / (losses || 1)
       break
     case 'Losses':
       total = card.losses ? sumStakes(card.losses) : 0
@@ -58,24 +58,32 @@ function GraphRow({
   card,
   stat,
   total,
-  asPercentage
+  asPercentage,
 }: {
   card: CardType
   stat: number
   total: number
   asPercentage: boolean
 }) {
-  const isJoker = card.status == 'Common' || card.status == 'Uncommon' || card.status == 'Rare' || card.status == 'Legendary'
+  const isJoker =
+    card.status == 'Common' ||
+    card.status == 'Uncommon' ||
+    card.status == 'Rare' ||
+    card.status == 'Legendary'
   return (
     <div className={styles.graphRow}>
-      <div 
+      <div
         className={styles.graphBar}
         style={{
-          backgroundColor: stat != 0 ? isJoker ? '#5f7e85' : `var(--${card.status})` : '#475658',
+          backgroundColor:
+            stat != 0
+              ? isJoker
+                ? '#5f7e85'
+                : `var(--${card.status})`
+              : '#475658',
           width: `calc((100% - var(--card-width) - 3rem - 0.5rem - 0.25rem) * ${stat / total} + 0.5rem)`,
         }}
       />
-
 
       <div className={styles.graphNumber}>
         {asPercentage ? `${stat}%` : stat || '-'}
@@ -94,8 +102,7 @@ function GraphRow({
   )
 }
 
-export default function Graph(
-{
+export default function Graph({
   cards,
   tab,
   sort,
@@ -105,31 +112,31 @@ export default function Graph(
   sort: string
 }) {
   const legendText: Record<string, string> = {
-    'Rounds': 'Total completed rounds with this card',
-    'Uses': 'Number of times this card has been used',
-    'Redeems': 'Number of times this Voucher has been redeemed',
+    Rounds: 'Total completed rounds with this card',
+    Uses: 'Number of times this card has been used',
+    Redeems: 'Number of times this Voucher has been redeemed',
 
     'Round %': 'Percentage of completed rounds with this card',
     'Use %': 'Percentage of times this card has been used',
     'Redeem %': 'Percentage of times this Voucher has been redeemed',
 
-    'Wins': `Number of wins with this ${tab == 'Decks' ? 'deck' : 'card'}`,
+    Wins: `Number of wins with this ${tab == 'Decks' ? 'deck' : 'card'}`,
     'Win %': `Percentage of games won with this ${tab == 'Decks' ? 'deck' : 'card'}`,
     'Wins per Loss': `Number of wins per loss with this ${tab == 'Decks' ? 'deck' : 'card'}`,
-    'Losses': `Number of losses with this ${tab == 'Decks' ? 'deck' : 'card'}`,
+    Losses: `Number of losses with this ${tab == 'Decks' ? 'deck' : 'card'}`,
   }
 
   return (
     <div className={styles.list}>
       <div className={styles.graphLegend}>
-        <div className={styles.graphSquare}/>
+        <div className={styles.graphSquare} />
         <>{legendText[sort]}</>
       </div>
       {cards.map((card, i) => {
         const stat = getStat(card, sort)
         const total = getTotal(cards, sort)
         return (
-          <GraphRow 
+          <GraphRow
             key={i} // this is necessary for the bar animations to work
             card={card}
             stat={stat}
@@ -139,5 +146,5 @@ export default function Graph(
         )
       })}
     </div>
-  )  
+  )
 }

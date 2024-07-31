@@ -10,25 +10,23 @@ import HandStats from '@/app/components/sections/records/HandStats/HandStats'
 import { useToImage } from '@/app/lib/utils'
 import { settingsContext } from '@/app/lib/context'
 
-export default function Records(
-{
-  profile
-}: {
-  profile: Profile
-}) {
+export default function Records({ profile }: { profile: Profile }) {
   const settings = useContext(settingsContext)
   const tabs = ['High Scores', 'Career Stats', 'Hand Stats']
   const [tab, setTab] = useState(tabs[0])
-  const [ref, savePNG] = useToImage(tab.toLowerCase().replace(' ', '_'), settings.saveImageinNewTab.enabled)
+  const [ref, savePNG] = useToImage(
+    tab.toLowerCase().replace(' ', '_'),
+    settings.saveImageinNewTab.enabled,
+  )
 
   const insides = (() => {
     switch (tab) {
       case 'High Scores':
-        return <HighScores profile={profile}/>
+        return <HighScores profile={profile} />
       case 'Career Stats':
-        return <CareerStats profile={profile}/>
+        return <CareerStats profile={profile} />
       case 'Hand Stats':
-        return <HandStats profile={profile}/>
+        return <HandStats profile={profile} />
     }
   })()
 
@@ -38,10 +36,10 @@ export default function Records(
         <div className={styles.tabs}>
           {tabs.map((tabName, i) => {
             return (
-              <Button 
-                key={tabName} 
-                name={tabName} 
-                active={tab == tabName} 
+              <Button
+                key={tabName}
+                name={tabName}
+                active={tab == tabName}
                 color={'red'}
                 callback={() => {
                   setTab(tabs[i])
@@ -53,15 +51,16 @@ export default function Records(
         {insides}
       </div>
 
-      <div 
+      <div
         style={{
-          paddingBottom: '0.5rem'
-        }}>
+          paddingBottom: '0.5rem',
+        }}
+      >
         <Button
           name={'Save as Image'}
           color={'blue'}
           style={{
-            borderRadius: '0 0 0.5rem 0.5rem'
+            borderRadius: '0 0 0.5rem 0.5rem',
           }}
           callback={savePNG}
         />

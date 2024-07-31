@@ -1,10 +1,17 @@
 import styles from '@/app/styles/inputs.module.css'
-import { Dispatch, KeyboardEvent, SetStateAction, useContext, useRef, useState } from "react";
-import { soundContext } from '@/app/lib/context';
-import Combobox from "./Combobox";
+import {
+  Dispatch,
+  KeyboardEvent,
+  SetStateAction,
+  useContext,
+  useRef,
+  useState,
+} from 'react'
+import { soundContext } from '@/app/lib/context'
+import Combobox from './Combobox'
 
 function getAction(e: KeyboardEvent, popupOpen: boolean) {
-  const {key, altKey, ctrlKey} = e
+  const { key, altKey, ctrlKey } = e
   if (altKey) {
     if (key == 'ArrowUp') {
       if (popupOpen) {
@@ -21,11 +28,10 @@ function getAction(e: KeyboardEvent, popupOpen: boolean) {
     if (key == 'Home') {
       return 'first'
     }
-    if (key == 'End')
-      return 'last'
+    if (key == 'End') return 'last'
   }
 
-  switch(key) {
+  switch (key) {
     case 'Escape':
       return 'clear'
     case 'Enter':
@@ -57,7 +63,9 @@ export default function Search({
   const [popupOpen, setPopupOpen] = useState(false)
   const [selected, setSelected] = useState('')
   const pageSize = 15
-  const filteredOptions = options.filter((option) => option.toLowerCase().includes(current.toLowerCase()))
+  const filteredOptions = options.filter((option) =>
+    option.toLowerCase().includes(current.toLowerCase()),
+  )
   const inputRef = useRef<HTMLInputElement>(null)
 
   const sounds = useContext(soundContext)
@@ -65,7 +73,7 @@ export default function Search({
   const playCardSound = sounds['cardSound']
 
   return (
-    <Combobox 
+    <Combobox
       options={filteredOptions}
       current={selected}
       popupOpen={popupOpen}
@@ -79,7 +87,7 @@ export default function Search({
       <input
         className={[styles.select, 'blue', 'blueFocus'].join(' ')}
         name={`Search ${placeholder}`}
-        type='input'
+        type="input"
         ref={inputRef}
         value={current}
         placeholder={placeholder}
@@ -91,7 +99,7 @@ export default function Search({
           const action = getAction(e, popupOpen)
           let newIndex = 0
 
-          switch(action) {
+          switch (action) {
             case 'open':
             case 'submit':
               if (!popupOpen) {
@@ -113,11 +121,11 @@ export default function Search({
               if (!popupOpen) {
                 setPopupOpen(true)
               }
-              playCardSound({playbackRate: Math.random()*0.2 + 0.9})
+              playCardSound({ playbackRate: Math.random() * 0.2 + 0.9 })
               break
           }
 
-          switch(action) {
+          switch (action) {
             case 'open':
               setPopupOpen(true)
               break
@@ -143,15 +151,24 @@ export default function Search({
               setSelected(filteredOptions[newIndex])
               break
             case 'down':
-              newIndex = Math.min(filteredOptions.indexOf(selected) + 1, filteredOptions.length - 1)
+              newIndex = Math.min(
+                filteredOptions.indexOf(selected) + 1,
+                filteredOptions.length - 1,
+              )
               setSelected(filteredOptions[newIndex])
               break
             case 'pageUp':
-              newIndex = Math.max(filteredOptions.indexOf(selected) - pageSize, 0)
+              newIndex = Math.max(
+                filteredOptions.indexOf(selected) - pageSize,
+                0,
+              )
               setSelected(filteredOptions[newIndex])
               break
             case 'pageDown':
-              newIndex = Math.min(filteredOptions.indexOf(selected) + pageSize, filteredOptions.length - 1)
+              newIndex = Math.min(
+                filteredOptions.indexOf(selected) + pageSize,
+                filteredOptions.length - 1,
+              )
               setSelected(filteredOptions[newIndex])
               break
             case 'first':

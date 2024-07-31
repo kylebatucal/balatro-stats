@@ -1,7 +1,25 @@
-import { consumableNames, consumableSprites, deckNames, deckSprites, jokerExtraSprites, jokerNames, jokerRarity, jokerSprites, voucherNames, voucherSprites } from "./cardMappings"
-import { consumableKeys, deckKeys, jokerKeys, planetKeys, spectralKeys, tarotKeys, voucherKeys } from "./cardKeys"
-import { CardType } from "@/app/lib/types"
-
+import {
+  consumableNames,
+  consumableSprites,
+  deckNames,
+  deckSprites,
+  jokerExtraSprites,
+  jokerNames,
+  jokerRarity,
+  jokerSprites,
+  voucherNames,
+  voucherSprites,
+} from './cardMappings'
+import {
+  consumableKeys,
+  deckKeys,
+  jokerKeys,
+  planetKeys,
+  spectralKeys,
+  tarotKeys,
+  voucherKeys,
+} from './cardKeys'
+import { CardType } from '@/app/lib/types'
 
 function initalizeJoker(key: string): CardType {
   return {
@@ -10,8 +28,10 @@ function initalizeJoker(key: string): CardType {
     losses: {},
     count: 0,
     image: `url(/images/cards/Jokers.png) ${jokerSprites[key]} / 1000%`,
-    topImage: jokerExtraSprites[key] && `url(/images/cards/Jokers.png) ${jokerExtraSprites[key]} / 1000%`,
-    status: jokerRarity[key]
+    topImage:
+      jokerExtraSprites[key] &&
+      `url(/images/cards/Jokers.png) ${jokerExtraSprites[key]} / 1000%`,
+    status: jokerRarity[key],
   }
 }
 
@@ -21,7 +41,7 @@ function initalizeDeck(key: string): CardType {
     wins: {},
     losses: {},
     image: `url(/images/cards/Enhancers.png) ${deckSprites[key]} / 700%`,
-    status: 'Deck'
+    status: 'Deck',
   }
 }
 
@@ -42,8 +62,9 @@ function initalizeConsumable(key: string): CardType {
     name: consumableNames[key],
     count: 0,
     image: `url(/images/cards/Tarots.png) ${consumableSprites[key]} / 1000%`,
-    topImage: key == 'c_soul' ? `url(/images/cards/Enhancers.png) 0 -100% / 700%` : '',
-    status: status
+    topImage:
+      key == 'c_soul' ? `url(/images/cards/Enhancers.png) 0 -100% / 700%` : '',
+    status: status,
   }
 }
 
@@ -52,47 +73,38 @@ function initalizeVouchers(key: string): CardType {
     name: voucherNames[key],
     count: 0,
     image: `url(/images/cards/Vouchers.png) ${voucherSprites[key]} / 900%`,
-    status: 'Voucher'
+    status: 'Voucher',
   }
 }
 
-export const initalJokers = (() => {
-  const jokers: Record<string, CardType> = {
-
-  }
+export const initalJokers = () => {
+  const jokers: Record<string, CardType> = {}
   jokerKeys.map((key) => {
     jokers[key] = initalizeJoker(key)
   })
   return jokers
-})
+}
 
-
-export const initalDecks = (() => {
-  const decks: Record<string, CardType> = {
-
-  }
+export const initalDecks = () => {
+  const decks: Record<string, CardType> = {}
   deckKeys.map((key) => {
     decks[key] = initalizeDeck(key)
   })
   return decks
-})
+}
 
-export const initalConsumables = (() => {
-  const consumables: Record<string, CardType> = {
-
-  }
+export const initalConsumables = () => {
+  const consumables: Record<string, CardType> = {}
   consumableKeys.map((key) => {
     consumables[key] = initalizeConsumable(key)
   })
   return consumables
-})
+}
 
-export const initalVouchers = (() => {
-  const vouchers: Record<string, CardType> = {
-
-  }
+export const initalVouchers = () => {
+  const vouchers: Record<string, CardType> = {}
   voucherKeys.map((key) => {
     vouchers[key] = initalizeVouchers(key)
   })
   return vouchers
-})
+}

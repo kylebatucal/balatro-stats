@@ -50,12 +50,22 @@
 }
 
 @keyframes fadeIn {
-  0% {opacity: 0}
-  100% {opacity: 1}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slide {
-  0% {top: 250%}
-  66% {top: 48%}
-  100% {top: 50%}
+  0% {
+    top: 250%;
+  }
+  66% {
+    top: 48%;
+  }
+  100% {
+    top: 50%;
+  }
 }

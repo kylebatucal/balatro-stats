@@ -7,7 +7,7 @@
   border-radius: 0.5rem;
   padding: 0.25rem;
 
-  height:fit-content
+  height: fit-content;
 }
 
 .progress .stat:first-child,
@@ -89,7 +89,7 @@
 
 .handLevel {
   color: #3a5055;
-  
+
   text-shadow: none;
 
   border-width: 0.125rem;
@@ -142,7 +142,6 @@
   padding-left: 0.25rem;
   min-width: 3rem;
   width: fit-content;
-
 }
 
 .handUsageContainer {
@@ -164,5 +163,5 @@
   margin-left: 0.125rem;
   min-width: 3rem;
   padding: 0 0.5rem;
-  width: fit-content
+  width: fit-content;
 }

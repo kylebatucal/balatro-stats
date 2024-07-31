@@ -1,17 +1,13 @@
 'use client'
 
 import styles from '@/app/styles/sections/records.module.css'
-import { Profile } from "@/app/lib/types"
+import { Profile } from '@/app/lib/types'
 import { useState } from 'react'
 import InputContainer from '@/app/components/inputs/InputContainer'
 import HandStat from '@/app/components/sections/records/HandStats/HandStat'
 import Select from '@/app/components/inputs/Select'
 
-export default function HandStats({
-  profile
-}: {
-  profile: Profile
-}) {
+export default function HandStats({ profile }: { profile: Profile }) {
   interface HandType {
     name: string
     level: number
@@ -21,9 +17,9 @@ export default function HandStats({
     pchips: number
     pmult: number
   }
-  
+
   const hands: Record<string, HandType> = {
-    'HighCard': {
+    HighCard: {
       name: 'High Card',
       level: 1,
       usage: 0,
@@ -31,9 +27,9 @@ export default function HandStats({
       chips: 5,
       mult: 1,
       pchips: 10,
-      pmult: 1
+      pmult: 1,
     },
-    'Pair': {
+    Pair: {
       name: 'Pair',
       level: 1,
       usage: 0,
@@ -41,9 +37,9 @@ export default function HandStats({
       chips: 10,
       mult: 2,
       pchips: 15,
-      pmult: 1
+      pmult: 1,
     },
-    'TwoPair': {
+    TwoPair: {
       name: 'Two Pair',
       level: 1,
       usage: 0,
@@ -51,9 +47,9 @@ export default function HandStats({
       chips: 20,
       mult: 2,
       pchips: 20,
-      pmult: 1
+      pmult: 1,
     },
-    'ThreeofaKind': {
+    ThreeofaKind: {
       name: 'Three of a Kind',
       level: 1,
       usage: 0,
@@ -61,19 +57,19 @@ export default function HandStats({
       chips: 30,
       mult: 3,
       pchips: 20,
-      pmult: 2
+      pmult: 2,
     },
-    'Straight': {
+    Straight: {
       name: 'Straight',
       level: 1,
       usage: 0,
 
-      chips: 30, 
+      chips: 30,
       mult: 4,
       pchips: 30,
-      pmult: 3
+      pmult: 3,
     },
-    'Flush': {
+    Flush: {
       name: 'Flush',
       level: 1,
       usage: 0,
@@ -81,9 +77,9 @@ export default function HandStats({
       chips: 35,
       mult: 4,
       pchips: 15,
-      pmult: 2 
+      pmult: 2,
     },
-    'FullHouse': {
+    FullHouse: {
       name: 'Full House',
       level: 1,
       usage: 0,
@@ -91,9 +87,9 @@ export default function HandStats({
       chips: 40,
       mult: 4,
       pchips: 25,
-      pmult: 2
+      pmult: 2,
     },
-    'FourofaKind': {
+    FourofaKind: {
       name: 'Four of a Kind',
       level: 1,
       usage: 0,
@@ -101,9 +97,9 @@ export default function HandStats({
       chips: 60,
       mult: 7,
       pchips: 30,
-      pmult: 3 
+      pmult: 3,
     },
-    'StraightFlush': {
+    StraightFlush: {
       name: 'Straight Flush',
       level: 1,
       usage: 0,
@@ -111,9 +107,9 @@ export default function HandStats({
       chips: 100,
       mult: 8,
       pchips: 40,
-      pmult: 4 
+      pmult: 4,
     },
-    'FiveofaKind': {
+    FiveofaKind: {
       name: 'Five of a Kind',
       level: 1,
       usage: 0,
@@ -121,10 +117,9 @@ export default function HandStats({
       chips: 120,
       mult: 12,
       pchips: 35,
-      pmult: 3 
-
+      pmult: 3,
     },
-    'FlushHouse': {
+    FlushHouse: {
       name: 'Flush House',
       level: 1,
       usage: 0,
@@ -132,10 +127,9 @@ export default function HandStats({
       chips: 140,
       mult: 14,
       pchips: 40,
-      pmult: 4
-
+      pmult: 4,
     },
-    'FlushFive': {
+    FlushFive: {
       name: 'Flush Five',
       level: 1,
       usage: 0,
@@ -143,27 +137,27 @@ export default function HandStats({
       chips: 160,
       mult: 16,
       pchips: 50,
-      pmult: 3 
+      pmult: 3,
     },
   }
 
   const planetsToHands = {
-    'c_pluto': 'HighCard',
-    'c_mercury': 'Pair',
-    'c_uranus': 'TwoPair',
-    'c_venus': 'ThreeofaKind',
-    'c_saturn': 'Straight',
-    'c_jupiter': 'Flush',
-    'c_earth': 'FullHouse',
-    'c_mars': 'FourofaKind',
-    'c_neptune': 'StraightFlush',
-    'c_planet_x': 'FiveofaKind',
-    'c_ceres': 'FlushHouse',
-    'c_eris': 'FlushFive',
+    c_pluto: 'HighCard',
+    c_mercury: 'Pair',
+    c_uranus: 'TwoPair',
+    c_venus: 'ThreeofaKind',
+    c_saturn: 'Straight',
+    c_jupiter: 'Flush',
+    c_earth: 'FullHouse',
+    c_mars: 'FourofaKind',
+    c_neptune: 'StraightFlush',
+    c_planet_x: 'FiveofaKind',
+    c_ceres: 'FlushHouse',
+    c_eris: 'FlushFive',
   } as const
 
   // Update use count
-  Object.entries(profile.hand_usage).forEach(([key, {count}]) => {
+  Object.entries(profile.hand_usage).forEach(([key, { count }]) => {
     hands[key].usage = count
   })
 
@@ -185,12 +179,20 @@ export default function HandStats({
   }
 
   const sortingOptions: Record<string, (a: HandType, b: HandType) => number> = {
-    'Rank': () => 0,
-    'Level': (a: HandType, b: HandType) => a.level - b.level,
-    'Chips': (a: HandType, b: HandType) => calculateTotal(a.chips, a.pchips, a.level) - calculateTotal(b.chips, b.pchips, b.level),
-    'Mult': (a: HandType, b: HandType) => calculateTotal(a.mult, a.pmult, a.level) - calculateTotal(b.mult, b.pmult, b.level),
-    'Score': (a: HandType, b: HandType) => calculateTotal(a.chips, a.pchips, a.level) + calculateTotal(a.mult, a.pmult, a.level) - calculateTotal(b.chips, b.pchips, b.level) - calculateTotal(b.mult, b.pmult, b.level),
-    'Usage': (a: HandType, b: HandType) => a.usage - b.usage,
+    Rank: () => 0,
+    Level: (a: HandType, b: HandType) => a.level - b.level,
+    Chips: (a: HandType, b: HandType) =>
+      calculateTotal(a.chips, a.pchips, a.level) -
+      calculateTotal(b.chips, b.pchips, b.level),
+    Mult: (a: HandType, b: HandType) =>
+      calculateTotal(a.mult, a.pmult, a.level) -
+      calculateTotal(b.mult, b.pmult, b.level),
+    Score: (a: HandType, b: HandType) =>
+      calculateTotal(a.chips, a.pchips, a.level) +
+      calculateTotal(a.mult, a.pmult, a.level) -
+      calculateTotal(b.chips, b.pchips, b.level) -
+      calculateTotal(b.mult, b.pmult, b.level),
+    Usage: (a: HandType, b: HandType) => a.usage - b.usage,
   }
 
   const [sort, setSort] = useState(Object.keys(sortingOptions)[0])
@@ -198,10 +200,15 @@ export default function HandStats({
 
   return (
     <div className={styles.handStats}>
-      <InputContainer label='Sort'>
-        <Select options={Object.keys(sortingOptions)} current={sort} setCurrent={setSort} color={'orange'}/>
+      <InputContainer label="Sort">
+        <Select
+          options={Object.keys(sortingOptions)}
+          current={sort}
+          setCurrent={setSort}
+          color={'orange'}
+        />
       </InputContainer>
-      
+
       {sortedHands.toReversed().map((hand) => {
         return (
           <HandStat

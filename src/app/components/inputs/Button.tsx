@@ -15,13 +15,13 @@ export default function Button({
   active?: boolean
   color?: 'red' | 'blue' | 'orange'
   style?: Record<string, string | number>
-  callback: () => void,
+  callback: () => void
   disabled?: boolean
   underline?: boolean
 }) {
   const sounds = useContext(soundContext)
   const play = sounds['buttonSound']
-  
+
   const classes = [styles.button]
   color && classes.push(color)
   underline && classes.push(styles.underline)
@@ -35,8 +35,8 @@ export default function Button({
           display: active ? 'block' : 'none',
         }}
       />
-      
-      <button 
+
+      <button
         className={classes.join(' ')}
         style={style}
         onClick={() => {

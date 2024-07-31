@@ -33,20 +33,19 @@ function Chip({
   const sounds = useContext(soundContext)
   const play = sounds['chipSound']
 
-  return(
-    <Tooltip
-      name={name}
-      wins={wins}
-      losses={losses}
-    >
-      <div className={styles.chip}
+  return (
+    <Tooltip name={name} wins={wins} losses={losses}>
+      <div
+        className={styles.chip}
         style={{
           background: getChipImage(name),
-          opacity: beaten ? '1': '0.25'
+          opacity: beaten ? '1' : '0.25',
         }}
-        onPointerEnter={() => play({playbackRate: Math.random()*0.1 + 0.55})}
+        onPointerEnter={() =>
+          play({ playbackRate: Math.random() * 0.1 + 0.55 })
+        }
       />
-    </Tooltip>    
+    </Tooltip>
   )
 }
 
@@ -59,12 +58,12 @@ const stakes = {
   6: 'Purple Stake',
   7: 'Orange Stake',
   8: 'Gold Stake',
-  allStakes: [1, 2, 3, 4, 5, 6, 7, 8] as const
+  allStakes: [1, 2, 3, 4, 5, 6, 7, 8] as const,
 }
 
 export default function Chips({
   wins,
-  losses
+  losses,
 }: {
   wins: Record<number, number>
   losses: Record<number, number>
@@ -75,7 +74,9 @@ export default function Chips({
   return (
     <div className={styles.chips}>
       {stakes.allStakes.map((stake, i) => {
-        const condition = settings.highlightChipsOnlyIfWin.enabled ? wins[stake] : i < highestStake
+        const condition = settings.highlightChipsOnlyIfWin.enabled
+          ? wins[stake]
+          : i < highestStake
 
         return (
           <Chip

@@ -5,28 +5,28 @@ export default function Stat({
   value,
   extra,
   color,
-  bar
+  bar,
 }: {
   name: string
   value: string | number
   color?: string
   extra?: string | number
-  bar?: {percentage: number; allUnlocked: boolean}
+  bar?: { percentage: number; allUnlocked: boolean }
 }) {
   return (
     <div
       className={styles.stat}
       style={{
         backgroundColor: name == 'Progress' ? 'transparent' : '',
-        boxShadow: name == 'Progress' ? 'none' : ''
+        boxShadow: name == 'Progress' ? 'none' : '',
       }}
     >
       <div className={styles.statName}>{name}</div>
       <div className={styles.statBox}>
-        <div 
+        <div
           className={styles.statBackground}
           style={{
-            padding: name == 'Progress' ? '0.8rem' : '0.9rem'
+            padding: name == 'Progress' ? '0.8rem' : '0.9rem',
           }}
         />
 
@@ -40,22 +40,26 @@ export default function Stat({
           }}
         />
 
-        <div 
+        <div
           className={styles.statValue}
           style={{
-            color: `var(--${color})`
+            color: `var(--${color})`,
           }}
         >
-          {name == 'Best Hand' && <div
-            style={{
-              backgroundImage: 'url(/images/chip.png)',
-              backgroundSize: '100%',
-              aspectRatio: 1/1,
-              height: '1rem', // coincidentally happens to be 1 rem
-            }}
-          />}
+          {name == 'Best Hand' && (
+            <div
+              style={{
+                backgroundImage: 'url(/images/chip.png)',
+                backgroundSize: '100%',
+                aspectRatio: 1 / 1,
+                height: '1rem', // coincidentally happens to be 1 rem
+              }}
+            />
+          )}
           {value}{' '}
-          <span className={styles.statExtra}>{extra !== undefined ? `(${extra})` : ''}</span>
+          <span className={styles.statExtra}>
+            {extra !== undefined ? `(${extra})` : ''}
+          </span>
         </div>
       </div>
     </div>

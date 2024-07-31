@@ -1,11 +1,10 @@
 import styles from '@/app/styles/sections/collection.module.css'
-import Hand from "../../pieces/Hand"
+import Hand from '../../pieces/Hand'
 import { CardType } from '@/app/lib/types'
 
-export default function Grid(
-{
+export default function Grid({
   cards,
-  tab
+  tab,
 }: {
   cards: CardType[]
   tab: string
@@ -15,17 +14,9 @@ export default function Grid(
   const hands = []
   for (let i = 0; i < cards.length; i += cardsPerHand) {
     hands.push(
-      <Hand
-        key={i} 
-        cards={cards.slice(i, i + cardsPerHand)}
-        gap={gap}
-      />
+      <Hand key={i} cards={cards.slice(i, i + cardsPerHand)} gap={gap} />,
     )
   }
 
-  return (
-    <div className={styles.grid}>
-      {hands}
-    </div>
-  )  
+  return <div className={styles.grid}>{hands}</div>
 }

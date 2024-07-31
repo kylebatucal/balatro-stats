@@ -7,18 +7,19 @@ export function decompressJKR(data: ArrayBuffer) {
   const uncompressed = Pako.inflateRaw(data, { to: 'string' })
   const formatted = uncompressed
     .replace(/^return /, '')
-    .replace(/\["(.*?)"\]=/g, '\"$1\":')
-    .replace(/\[(\d+)\]=/g, '\"$1\":')
+    .replace(/\["(.*?)"\]=/g, '"$1":')
+    .replace(/\[(\d+)\]=/g, '"$1":')
     .replace(/,}/g, '}')
   return JSON.parse(formatted)
 }
 
 export function readProfile(file: File, callback: (data: Profile) => void) {
   const reader = new FileReader()
-  reader.onload = ((e) => {
+  reader.onload = (e) => {
     try {
       const data = decompressJKR(e.target!.result as ArrayBuffer)
-      if (data?.joker_usage) { // check if its profile.jkr
+      if (data?.joker_usage) {
+        // check if its profile.jkr
         callback(data)
       } else {
         alert('ERROR: File is not profile.jkr')
@@ -27,7 +28,7 @@ export function readProfile(file: File, callback: (data: Profile) => void) {
       console.error(err)
       alert('ERROR: Could not read file')
     }
-  })
+  }
   reader.readAsArrayBuffer(file)
 }
 
@@ -59,26 +60,26 @@ export const initialProfile: Profile = {
   deck_usage: {},
   hand_usage: {},
   high_scores: {
-    boss_streak: {label: 'Most Bosses in a Row', amt: 0},
-    collection: {amt: 2, label: 'Collection', tot: 340},
-    current_streak: {label: '', amt: 0},
-    furthest_ante: {label: 'Highest Ante', amt: 0},
-    furthest_round: {label: 'Highest Round', amt: 0},
-    hand: {label: 'Best Hand', amt: 0},
-    most_money: {label: 'Most Money', amt: 0},
-    poker_hand: {label: 'Most Played Hand', amt: 0},
-    win_streak: {label: 'Best Win Streak', amt: 0}
+    boss_streak: { label: 'Most Bosses in a Row', amt: 0 },
+    collection: { amt: 2, label: 'Collection', tot: 340 },
+    current_streak: { label: '', amt: 0 },
+    furthest_ante: { label: 'Highest Ante', amt: 0 },
+    furthest_round: { label: 'Highest Round', amt: 0 },
+    hand: { label: 'Best Hand', amt: 0 },
+    most_money: { label: 'Most Money', amt: 0 },
+    poker_hand: { label: 'Most Played Hand', amt: 0 },
+    win_streak: { label: 'Best Win Streak', amt: 0 },
   },
   joker_usage: {},
   name: 'Jimbo',
   progress: {
-    challenges: {of: 20, tally: 0},
-    deck_stakes: {of: 120, tally: 0},
-    discovered: {of: 340, tally: 2}, // it is impossible for the tally to be 0; the player starts with Joker and Red Deck
-    joker_stickers: {of: 1200, tally: 0},
+    challenges: { of: 20, tally: 0 },
+    deck_stakes: { of: 120, tally: 0 },
+    discovered: { of: 340, tally: 2 }, // it is impossible for the tally to be 0; the player starts with Joker and Red Deck
+    joker_stickers: { of: 1200, tally: 0 },
     overall_of: 4,
-    overall_tally: 2/(20+120+340+1200)
+    overall_tally: 2 / (20 + 120 + 340 + 1200),
   },
   voucher_usage: {},
-  lastUpdated: null
+  lastUpdated: null,
 }

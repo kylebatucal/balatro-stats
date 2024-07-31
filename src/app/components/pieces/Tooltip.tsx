@@ -8,7 +8,7 @@ export default function Tooltip({
   rounds,
   status,
   translateY,
-  desc
+  desc,
 }: {
   children: React.ReactNode
   name?: string
@@ -21,7 +21,7 @@ export default function Tooltip({
 }) {
   const roundNoun = (() => {
     const plural = rounds != 1
-    switch(status) {
+    switch (status) {
       case 'Tarot':
       case 'Planet':
       case 'Spectral':
@@ -42,56 +42,53 @@ export default function Tooltip({
   }
 
   return (
-    <div 
+    <div
       className={styles.tooltipWrapper}
       style={{
-        transform: translateY ? `translateY(${translateY}rem)` : ''
+        transform: translateY ? `translateY(${translateY}rem)` : '',
       }}
     >
       <div className={styles.tooltip}>
-        {name && <p className={styles.tooltipTitle}>
-          {name}
-        </p>}
+        {name && <p className={styles.tooltipTitle}>{name}</p>}
 
         <div className={styles.tooltipDesc}>
-          {wins != undefined &&
-          <p>
-            <span className={styles.tooltipStat}>{wins}</span>{' '}
-            {wins != 1 ? 'wins' : 'win'}
-          </p>}
+          {wins != undefined && (
+            <p>
+              <span className={styles.tooltipStat}>{wins}</span>{' '}
+              {wins != 1 ? 'wins' : 'win'}
+            </p>
+          )}
 
-          {losses != undefined &&
-          <p>
-            <span className={styles.tooltipStat}>{losses}</span>{' '}
-            {losses != 1 ? 'losses' : 'loss'}
-          </p>}
+          {losses != undefined && (
+            <p>
+              <span className={styles.tooltipStat}>{losses}</span>{' '}
+              {losses != 1 ? 'losses' : 'loss'}
+            </p>
+          )}
 
-          {rounds != undefined && 
-          <p>
-            <span className={styles.tooltipStat}>{rounds}</span>{' '}
-            {roundNoun}
-          </p>}
+          {rounds != undefined && (
+            <p>
+              <span className={styles.tooltipStat}>{rounds}</span> {roundNoun}
+            </p>
+          )}
 
-          {desc &&
-          <p>
-            {desc}
-          </p>}
+          {desc && <p>{desc}</p>}
         </div>
 
-        {status && 
-        <div className={styles.tooltipStatus}
-          style={{
-            backgroundColor: `var(--${status})`,
-            boxShadow: `0 var(--shadow-length) 0 color-mix(in srgb, var(--${status}), var(--shadow))`,
-          }}
-        >
-          {statusText}
-        </div>}
+        {status && (
+          <div
+            className={styles.tooltipStatus}
+            style={{
+              backgroundColor: `var(--${status})`,
+              boxShadow: `0 var(--shadow-length) 0 color-mix(in srgb, var(--${status}), var(--shadow))`,
+            }}
+          >
+            {statusText}
+          </div>
+        )}
       </div>
 
-      <div className={styles.tooltipItem}>
-        {children}
-      </div>
+      <div className={styles.tooltipItem}>{children}</div>
     </div>
   )
 }

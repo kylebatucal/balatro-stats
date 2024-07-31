@@ -3,6 +3,7 @@
 [balatro-stats.vercel.app](https://balatro-stats.vercel.app/)
 
 Supercharged web app of the stats menu in Balatro.
+
 - View all the stats the game tracks, including the hidden ones.
 - Track, sort, and graph your collection with various filters.
 - Share your stats through a saved image or [PLANNED] a URL.

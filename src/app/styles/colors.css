@@ -35,7 +35,7 @@
 }
 
 .blue {
-  background-color: var(--blue)
+  background-color: var(--blue);
 }
 
 .blue:hover {
@@ -51,11 +51,11 @@
 }
 
 .orange:hover {
-  background-color: #a05b00;  
+  background-color: #a05b00;
 }
 
 .orangeFocus:focus {
-  background-color: #a05b00;  
+  background-color: #a05b00;
 }
 
 .green {

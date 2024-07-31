@@ -32,6 +32,6 @@ main {
   :root {
     font-size: calc(18px + 1.25vmin);
     --card-width: calc(142px + 1vmin);
-    --chip-size: calc(58px + 0.5vmin)
+    --chip-size: calc(58px + 0.5vmin);
   }
 }

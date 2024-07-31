@@ -1,16 +1,19 @@
-export function initalizeSettings(): Record<string, {label: string, enabled: boolean}> {
+export function initalizeSettings(): Record<
+  string,
+  { label: string; enabled: boolean }
+> {
   return {
     soundEnabled: {
       label: 'Enable sound',
-      enabled: true
+      enabled: true,
     },
     cardPerspective: {
       label: 'Enable card perspective effect',
-      enabled: true
+      enabled: true,
     },
     showPerGameStats: {
       label: 'Show per-game averages in career stats',
-      enabled: true
+      enabled: true,
     },
     // slideAnimation: {
     //   label: 'Enable slide animation on filters',
@@ -18,20 +21,20 @@ export function initalizeSettings(): Record<string, {label: string, enabled: boo
     // },
     fadeCardsWithNoRounds: {
       label: 'Fade unplayed cards',
-      enabled: false
+      enabled: false,
     },
     fadeCardsWithNoWins: {
       label: 'Fade cards with no wins',
-      enabled: false
+      enabled: false,
     },
     highlightChipsOnlyIfWin: {
       label: 'Highlight chips with wins only',
-      enabled: false
+      enabled: false,
     },
     saveImageinNewTab: {
       label: 'Open saved images in new tab',
-      enabled: false
-    }
+      enabled: false,
+    },
     // disableOverwriteConfirmation: {
     //   label: 'Disable profile overwrite confirmation prompt',
     //   enabled: false

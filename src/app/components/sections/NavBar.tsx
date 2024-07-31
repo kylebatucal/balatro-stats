@@ -6,13 +6,12 @@ import { Updater } from 'use-immer'
 import Button from '../inputs/Button'
 import Tooltip from '../pieces/Tooltip'
 
-
 export default function NavBar({
   profile,
-  setter
+  setter,
 }: {
   profile: Profile
-  setter: Updater<Record<string, {label: string, enabled: boolean}>>
+  setter: Updater<Record<string, { label: string; enabled: boolean }>>
 }) {
   const [active, setActive] = useState(false)
 
@@ -55,7 +54,7 @@ export default function NavBar({
           />
         </div>
       </div>
-      {active && <Options settingsSetter={setter} activeSetter={setActive}/>}
+      {active && <Options settingsSetter={setter} activeSetter={setActive} />}
     </>
   )
 }

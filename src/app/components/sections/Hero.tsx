@@ -1,15 +1,21 @@
 import styles from '@/app/styles/sections/hero.module.css'
-import { initialProfile, readProfile } from "@/app/lib/profile"
-import { Profile } from "@/app/lib/types"
-import { Dispatch, SetStateAction, useRef, useState, useContext, useEffect } from 'react'
+import { initialProfile, readProfile } from '@/app/lib/profile'
+import { Profile } from '@/app/lib/types'
+import {
+  Dispatch,
+  SetStateAction,
+  useRef,
+  useState,
+  useContext,
+  useEffect,
+} from 'react'
 import Button from '../inputs/Button'
 import { soundContext } from '@/app/lib/context'
 import Help from './Help'
 
-export default function Hero(
-{
+export default function Hero({
   saved,
-  profileSetter
+  profileSetter,
 }: {
   saved: boolean
   profileSetter: Dispatch<SetStateAction<Profile>>
@@ -33,25 +39,29 @@ export default function Hero(
   return (
     <>
       <div className={styles.hero}>
-        <h1 style={{
-          fontSize: '200%',
-          lineHeight: 1.5,
-          textAlign: 'center'
-        }}>
+        <h1
+          style={{
+            fontSize: '200%',
+            lineHeight: 1.5,
+            textAlign: 'center',
+          }}
+        >
           Balatro Stats
         </h1>
 
-        <div style={{
-          textAlign: 'center'
-        }}>
-          <p>
-            View your stats in Balatro! 
-          </p>
-          <div style={{
-            display: 'flex',
-            gap: '0.5rem',
-            justifyContent: 'center'
-          }}>
+        <div
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          <p>View your stats in Balatro!</p>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.5rem',
+              justifyContent: 'center',
+            }}
+          >
             Upload your profile.jkr to begin.
             <Button
               name={'(?)'}
@@ -73,8 +83,8 @@ export default function Hero(
             <input
               className={styles.input}
               ref={inputRef}
-              type='file'
-              accept='.jkr'
+              type="file"
+              accept=".jkr"
               onChange={(e) => {
                 const file = e.target.files?.[0]
                 if (file) {
@@ -92,7 +102,7 @@ export default function Hero(
               color={'blue'}
               style={{
                 padding: '0.5rem 2.5rem',
-                fontSize: '125%'
+                fontSize: '125%',
               }}
               callback={() => {
                 if (inputRef.current) {
@@ -107,7 +117,7 @@ export default function Hero(
               name={'Reset Profile'}
               color={'red'}
               style={{
-                padding: '0.25rem 1.5rem'
+                padding: '0.25rem 1.5rem',
               }}
               callback={() => {
                 if (confirm) {
@@ -120,9 +130,9 @@ export default function Hero(
                   localStorage.removeItem('profile')
                 } else {
                   // Ask the user to confirm to reset
-                  play({playbackRate: 1})
+                  play({ playbackRate: 1 })
                   setTimeout(() => {
-                    play({playbackRate: 0.76})
+                    play({ playbackRate: 0.76 })
                   }, 60)
 
                   setConfirm(true)
@@ -137,17 +147,17 @@ export default function Hero(
           </div>
         </div>
 
-        <p 
+        <p
           className={`${styles.warning}${confirm ? ` ${styles.animation}` : ''}`}
           style={{
             visibility: confirm ? 'visible' : 'hidden',
-          }}>
-            Click again to confirm
+          }}
+        >
+          Click again to confirm
         </p>
-
       </div>
 
-      {help && <Help setter={setHelp}/>}
+      {help && <Help setter={setHelp} />}
     </>
   )
 }

@@ -37,32 +37,22 @@ export default function HandStat({
   })()
 
   return (
-    <div 
-      className={styles.handStat}
-      onPointerEnter={() => play()}
-    >
+    <div className={styles.handStat} onPointerEnter={() => play()}>
       <div
         className={styles.handLevel}
         style={{
-          backgroundColor: levelColor
+          backgroundColor: levelColor,
         }}
       >
         lvl.{level}
       </div>
 
-      <div className={styles.handName}>
-        {hand}
-      </div>
+      <div className={styles.handName}>{hand}</div>
 
       <div className={styles.handRight}>
         <div className={styles.handScoring}>
-          <div className={styles.handChips}>
-            {chips}
-          </div>
-          X
-          <div className={styles.handMult}>
-            {mult}
-          </div>
+          <div className={styles.handChips}>{chips}</div>X
+          <div className={styles.handMult}>{mult}</div>
         </div>
 
         <div className={styles.handUsageContainer}>

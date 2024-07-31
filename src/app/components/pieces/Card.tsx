@@ -27,7 +27,7 @@ export default function Card({
   image,
   topImage,
   style,
-  desc
+  desc,
 }: {
   name: string
   wins?: Record<number, number>
@@ -36,7 +36,7 @@ export default function Card({
   status?: string
   image: string
   topImage?: string
-  style?: {translateY?: number, degrees?: number}
+  style?: { translateY?: number; degrees?: number }
   desc?: string
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
@@ -48,7 +48,7 @@ export default function Card({
     opacity = count === undefined || count != 0 ? opacity : 0.5
   }
   if (settings.fadeCardsWithNoWins.enabled) {
-    opacity = wins === undefined || wins && sumStakes(wins) ? opacity : 0.5
+    opacity = wins === undefined || (wins && sumStakes(wins)) ? opacity : 0.5
   }
 
   let stickerImage
@@ -59,7 +59,7 @@ export default function Card({
 
   const classes = [styles.topImage]
   if (topImage) {
-    if (!(['Hologram', 'The Soul', '404'].includes(name))) {
+    if (!['Hologram', 'The Soul', '404'].includes(name)) {
       classes.push(styles.legendary)
     }
     name == 'Hologram' && classes.push(styles.hologram)
@@ -92,7 +92,7 @@ export default function Card({
       translateY={style?.translateY}
       desc={desc}
     >
-      <div 
+      <div
         className={styles.card}
         ref={cardRef}
         style={{
@@ -101,23 +101,24 @@ export default function Card({
           opacity: opacity,
         }}
         onPointerEnter={() => {
-          play({playbackRate: Math.random()*0.2 + 0.9})
+          play({ playbackRate: Math.random() * 0.2 + 0.9 })
         }}
         onPointerMove={(e) => {
           if (settings.cardPerspective.enabled && cardRef.current) {
-            const {top, right, bottom, left, x, y} = cardRef.current.getBoundingClientRect()
+            const { top, right, bottom, left, x, y } =
+              cardRef.current.getBoundingClientRect()
             const width = right - left
             const height = bottom - top
 
-            const {clientX, clientY} = e
+            const { clientX, clientY } = e
 
             const xPercentage = (clientX - x) / width
             const yPercentage = (clientY - y) / height
 
             const degrees = 15
             setDegrees([
-              degrees * xPercentage - (degrees / 2),
-              degrees * yPercentage - (degrees / 2)
+              degrees * xPercentage - degrees / 2,
+              degrees * yPercentage - degrees / 2,
             ])
           }
         }}
@@ -125,12 +126,14 @@ export default function Card({
           setDegrees([0, 0])
         }}
       >
-        {topImage && <div
-          className={classes.join(' ')}
-          style={{
-            background: topImage,
-          }}
-        />}
+        {topImage && (
+          <div
+            className={classes.join(' ')}
+            style={{
+              background: topImage,
+            }}
+          />
+        )}
       </div>
     </Tooltip>
   )

@@ -5,7 +5,7 @@ import { soundContext } from '@/app/lib/context'
 export function Checkbox({
   label,
   checked,
-  callback
+  callback,
 }: {
   label: string
   checked: boolean
@@ -16,8 +16,8 @@ export function Checkbox({
 
   return (
     <div className={styles.checkbox}>
-      <input 
-        type='checkbox'
+      <input
+        type="checkbox"
         className={styles.checkboxInput}
         name={label}
         checked={checked}
@@ -26,9 +26,7 @@ export function Checkbox({
           callback()
         }}
       />
-      <div className={styles.checkboxLabel}>
-        {label}
-      </div>
+      <div className={styles.checkboxLabel}>{label}</div>
     </div>
   )
 }

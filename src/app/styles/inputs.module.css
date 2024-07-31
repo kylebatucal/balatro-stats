@@ -11,11 +11,11 @@
   transform: translateY(var(--shadow-length));
 }
 
-.buttonContainer:active .buttonTriangle{
+.buttonContainer:active .buttonTriangle {
   filter: none;
 }
 
-.buttonContainer:active .button{
+.buttonContainer:active .button {
   box-shadow: none;
 }
 
@@ -48,7 +48,7 @@
   text-underline-offset: 0.25rem;
 }
 
-/* Chicot reference */ 
+/* Chicot reference */
 .button:disabled:active {
   transform: translateY(calc(var(--shadow-length) * -1));
   box-shadow: 0 var(--shadow-length) var(--shadow);
@@ -136,7 +136,9 @@
 .inputContainer {
   border-width: 0.125rem;
   border-radius: 0.5rem;
-  box-shadow: 0 var(--shadow-length) #9c9da0, inset 0 var(--shadow-length) #9c9da0;
+  box-shadow:
+    0 var(--shadow-length) #9c9da0,
+    inset 0 var(--shadow-length) #9c9da0;
   padding: 0.5rem;
   text-align: center;
   margin-bottom: 0.5rem;
