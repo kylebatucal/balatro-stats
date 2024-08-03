@@ -1,7 +1,6 @@
 # Balatro Stats
 
-[balatro-stats.vercel.app](https://balatro-stats.vercel.app/)
-
+[balatrostats.com](https://www.balatrostats.com/)
 Supercharged web app of the stats menu in Balatro.
 
 - View all the stats the game tracks, including the hidden ones.
