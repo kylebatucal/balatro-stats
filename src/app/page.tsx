@@ -1,16 +1,16 @@
 'use client'
 
-import { initalizeSettings } from './lib/settings'
+import { initalizeSettings } from '@/lib/settings'
 import { useEffect, useState } from 'react'
 import { useImmer } from 'use-immer'
 import useSound from 'use-sound'
-import { initialProfile } from '@/app/lib/profile'
-import Hero from '@/app/components/sections/Hero'
-import NavBar from '@/app/components/sections/NavBar'
-import Records from '@/app/components/sections/records/Records'
-import Collection from '@/app/components/sections/collection/Collection'
-import Footer from '@/app/components/sections/Footer'
-import { settingsContext, soundContext } from '@/app/lib/context'
+import { initialProfile } from '@/lib/profile'
+import Hero from '@/components/sections/hero/Hero'
+import NavBar from '@/components/sections/navbar/NavBar'
+import Records from '@/components/sections/records/Records'
+import Collection from '@/components/sections/collection/Collection'
+import Footer from '@/components/sections/footer/Footer'
+import { settingsContext, soundContext } from '@/lib/context'
 
 export default function Page() {
   // Initalize and update profile

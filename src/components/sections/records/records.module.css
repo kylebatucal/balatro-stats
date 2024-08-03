@@ -1,0 +1,36 @@
+.records {
+  background-color: #3a5055;
+  box-shadow: 0 var(--shadow-length) 0 #777e89;
+  border-width: var(--shadow-length);
+  border-radius: 0.5rem;
+  border-color: #b9c2d2;
+  padding: 0 0.5rem;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+}
+
+.highScores {
+  padding-bottom: 0.5rem;
+}
+
+.careerStats {
+  display: grid;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.careerStatsLabel {
+  font-size: 125%;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.handStats {
+  padding-bottom: 0.5rem;
+}

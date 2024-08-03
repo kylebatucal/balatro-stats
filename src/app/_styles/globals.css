@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: calc(18px);
+  line-height: 1.15;
+
+  --card-width: 71px;
+  --card-height: calc(var(--card-width) * 1.338);
+  --chip-size: 29px;
+
+  --shadow-length: 0.125rem;
+  --text-shadow: 0.0625rem 0.0625rem var(--shadow);
+
+  --button-width: 6rem;
+
+  text-shadow: var(--text-shadow);
+}
+
+body {
+  color: white;
+  background: #438368;
+}
+
+main {
+  margin: 0 auto;
+  max-width: calc(var(--card-width) * 5.75);
+}
+
+a:hover {
+  text-decoration-line: underline;
+  text-underline-offset: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: calc(18px + 1.25vmin);
+    --card-width: calc(142px + 1vmin);
+    --chip-size: calc(58px + 0.5vmin);
+  }
+}

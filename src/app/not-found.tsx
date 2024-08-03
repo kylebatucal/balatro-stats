@@ -1,9 +1,8 @@
 'use client'
 
-import styles from '@/app/styles/notfound.module.css'
-import { soundContext } from '@/app/lib/context'
-import { jokerExtraSprites, jokerSprites } from './lib/cards/cardMappings'
-import Card from './components/pieces/Card'
+import { soundContext } from '@/lib/context'
+import { jokerExtraSprites, jokerSprites } from '@/lib/cards/cardMappings'
+import Card from '@/components/pieces/Card'
 import Link from 'next/link'
 
 export default function NotFound() {
@@ -19,16 +18,23 @@ export default function NotFound() {
 
   return (
     <soundContext.Provider value={sounds}>
-      <div className={styles.notFound}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          gap: '0.5rem',
+        }}
+      >
         <Card
           name={joker.name}
           image={joker.image}
           topImage={joker.topImage}
           desc={'Not Found'}
         />
-        <Link href="/">
-          <span className={styles.link}>Go home</span>
-        </Link>
+        <Link href="/">Go home</Link>
       </div>
     </soundContext.Provider>
   )

@@ -1,0 +1,80 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 14;
+
+  animation: fadeIn 250ms linear forwards;
+}
+
+.popup {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: calc(var(--card-width) * 5);
+
+  background-color: #3a5055;
+  box-shadow: 0 var(--shadow-length) 0 #777e89;
+  border-width: var(--shadow-length);
+  border-radius: 0.5rem;
+  border-color: #b9c2d2;
+  padding: 0.5rem;
+
+  z-index: 15;
+
+  animation: slide 500ms ease-in-out forwards;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.subSections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sectionHeading {
+  font-size: 125%;
+  padding-bottom: 0.25rem;
+  text-align: center;
+}
+
+.list {
+  list-style: auto;
+  padding-left: 1.5rem;
+}
+
+.link {
+  color: var(--blue);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  0% {
+    top: 250%;
+  }
+  66% {
+    top: 48%;
+  }
+  100% {
+    top: 50%;
+  }
+}
