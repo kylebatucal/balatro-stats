@@ -25,7 +25,7 @@ export default function NavBar({
         </>
 
         <div className={styles.buttons}>
-          <Button
+          {/* <Button
             name={'Share'}
             style={{
               padding: '0',
@@ -36,7 +36,7 @@ export default function NavBar({
               setShareOpen(true)
             }}
             underline={true}
-          />
+          /> */}
           <Button
             name={'Options'}
             style={{
