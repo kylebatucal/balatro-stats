@@ -25,7 +25,7 @@ export default function NavBar({
         </>
 
         <div className={styles.buttons}>
-          {/* <Button
+          <Button
             name={'Share'}
             style={{
               padding: '0',
@@ -36,7 +36,7 @@ export default function NavBar({
               setShareOpen(true)
             }}
             underline={true}
-          /> */}
+          />
           <Button
             name={'Options'}
             style={{
@@ -51,8 +51,10 @@ export default function NavBar({
           />
         </div>
       </div>
-      {shareOpen && <Login setter={setShareOpen}/>}
-      {optionsOpen && <Options settingsSetter={setter} activeSetter={setOptionsOpen} />}
+      {shareOpen && <Login setter={setShareOpen} />}
+      {optionsOpen && (
+        <Options settingsSetter={setter} activeSetter={setOptionsOpen} />
+      )}
     </>
   )
 }

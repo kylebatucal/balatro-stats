@@ -24,7 +24,11 @@ import Filters from '../../inputs/Filters'
 import { useImmer } from 'use-immer'
 import {
   baseVoucherNames,
+  consumableKeys,
+  deckKeys,
+  jokerKeys,
   upgradedVoucherNames,
+  voucherKeys,
 } from '../../../lib/cards/cardKeys'
 import { settingsContext } from '@/lib/context'
 
@@ -220,25 +224,33 @@ export default function Collection({ profile }: { profile: Profile }) {
 
   const jokers = initalJokers()
   Object.entries(profile.joker_usage).forEach(([joker, stats]) => {
-    jokers[joker].wins = stats.wins
-    jokers[joker].losses = stats.losses
-    jokers[joker].count = stats.count
+    if (jokers[joker]) {
+      jokers[joker].wins = stats.wins
+      jokers[joker].losses = stats.losses
+      jokers[joker].count = stats.count
+    }
   })
 
   const decks = initalDecks()
   Object.entries(profile.deck_usage).forEach(([deck, stats]) => {
-    decks[deck].wins = stats.wins
-    decks[deck].losses = stats.losses
+    if (decks[deck]) {
+      decks[deck].wins = stats.wins
+      decks[deck].losses = stats.losses
+    }
   })
 
   const consumables = initalConsumables()
   Object.entries(profile.consumeable_usage).forEach(([card, stats]) => {
-    consumables[card].count = stats.count
+    if (consumables[card]) {
+      consumables[card].count = stats.count
+    }
   })
 
   const vouchers = initalVouchers()
   Object.entries(profile.voucher_usage).forEach(([voucher, stats]) => {
-    vouchers[voucher].count = stats.count
+    if (vouchers[voucher]) {
+      vouchers[voucher].count = stats.count
+    }
   })
 
   const cards = (() => {

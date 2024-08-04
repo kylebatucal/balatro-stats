@@ -82,7 +82,6 @@ export default function HighScores({ profile }: { profile: Profile }) {
             key={key}
             name={keys[key].name}
             value={keys[key].value}
-            // Optional parameters
             extra={keys[key].extra}
             color={keys[key].color}
           />
