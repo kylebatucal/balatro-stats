@@ -32,9 +32,7 @@ export default function Filters({
       <Button
         name={`${activeFilterCount} ${activeFilterCount != 1 ? 'filters' : 'filter'} applied`}
         color={'red'}
-        style={{
-          width: '100%',
-        }}
+        full={true}
         callback={() => setOpen(!open)}
         disabled={!filters.length}
       />

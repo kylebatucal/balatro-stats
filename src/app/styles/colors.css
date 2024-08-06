@@ -21,51 +21,43 @@
   --Voucher: #ff5611;
 }
 
-/* Using a class is necessary if you want the hover selector to work */
 .red {
   background-color: var(--red);
 }
 
-.red:hover {
+.red:hover, 
+.red:active, 
+.red:focus {
   background-color: #a02721;
 }
 
-.redFocus:focus {
-  background-color: #a02721;
-}
 
 .blue {
   background-color: var(--blue);
 }
 
-.blue:hover {
-  background-color: #0057a1;
-}
-
-.blueFocus:focus {
+.blue:hover, 
+.blue:active, 
+.blue:focus {
   background-color: #0057a1;
 }
 
 .orange {
-  background-color: #ff8f00;
+  background-color: var(--orange);
 }
 
-.orange:hover {
-  background-color: #a05b00;
-}
-
-.orangeFocus:focus {
+.orange:hover, 
+.orange:active, 
+.orange:focus {
   background-color: #a05b00;
 }
 
 .green {
-  background-color: #429f79;
+  background-color: var(--green);
 }
 
-.green:hover {
-  background-color: #215f46;
-}
-
-.greenFocus:focus {
+.green:hover, 
+.green:active, 
+.green:focus {
   background-color: #215f46;
 }

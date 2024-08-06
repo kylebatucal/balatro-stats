@@ -94,6 +94,8 @@
 
   position: relative;
   --degrees: 0;
+
+  background-color: white;
 }
 
 .card:hover {

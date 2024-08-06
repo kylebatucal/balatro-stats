@@ -92,7 +92,7 @@ export default function Select({
       optionCallback={(option) => setCurrent(option)}
     >
       <div
-        className={[styles.select, color, `${color}Focus`].join(' ')}
+        className={[styles.select, color].join(' ')}
         ref={inputRef}
         tabIndex={0}
         onKeyDown={(e) => {

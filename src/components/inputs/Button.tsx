@@ -11,6 +11,7 @@ export default function Button({
   callback,
   disabled,
   underline,
+  full,
 }: {
   name: string
   active?: boolean
@@ -19,12 +20,16 @@ export default function Button({
   callback: () => void
   disabled?: boolean
   underline?: boolean
+  full?: boolean
 }) {
   const sounds = useContext(soundContext)
   const play = sounds['buttonSound']
 
   const cx = classNames.bind(styles)
-  const classes = cx('button', color, {
+  const buttonClasses = cx('button', {
+    full: full
+  })
+  const insideClasses = cx('buttonInsides', color, {
     underline: underline,
   })
 
@@ -39,15 +44,19 @@ export default function Button({
       />
 
       <button
-        className={classes}
-        style={style}
+        className={buttonClasses}
         onClick={() => {
           callback()
           play()
         }}
         disabled={disabled == undefined ? false : disabled}
       >
-        {name}
+        <div
+          className={insideClasses}
+          style={style}
+        >
+          {name}
+        </div>
       </button>
     </div>
   )

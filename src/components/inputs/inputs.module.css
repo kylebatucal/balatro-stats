@@ -7,15 +7,13 @@
   user-select: none;
 }
 
-.buttonContainer:active {
+.button:active .buttonTriangle {
   transform: translateY(var(--shadow-length));
-}
-
-.buttonContainer:active .buttonTriangle {
   filter: none;
 }
 
-.buttonContainer:active .button {
+.button:active .buttonInsides {
+  transform: translateY(var(--shadow-length));
   box-shadow: none;
 }
 
@@ -31,16 +29,21 @@
   pointer-events: none;
 }
 
-.button {
+.buttonInsides {
   box-shadow: 0 var(--shadow-length) var(--shadow);
   padding: 0.25rem 0.5rem;
   text-shadow: var(--text-shadow);
   border-radius: 0.5rem;
 }
 
-.button:disabled {
-  color: #6b6b6b;
-  background-color: #545454;
+.buttonInsides:active {
+  box-shadow: none;
+}
+
+@media (min-width: 1024px) {
+  .buttonInsides {
+    min-width: var(--button-width);
+  }
 }
 
 .underline:hover {
@@ -48,24 +51,23 @@
   text-underline-offset: 0.25rem;
 }
 
+.full {
+  width: 100%;
+}
+
 /* Chicot reference */
-.button:disabled:active {
-  transform: translateY(calc(var(--shadow-length) * -1));
+.button:disabled .buttonInsides {
+  color: #6b6b6b;
+  background-color: #545454;
+}
+
+.button:disabled:active .buttonInsides {
+  transform: translateY(0);
   box-shadow: 0 var(--shadow-length) var(--shadow);
 }
 
-.button:disabled:hover {
+.button:disabled .buttonInsides:hover {
   background-color: #2d2d2d;
-}
-
-@media (min-width: 1024px) {
-  .button {
-    min-width: var(--button-width);
-  }
-}
-
-.button:active {
-  box-shadow: none;
 }
 
 /* Combobox */

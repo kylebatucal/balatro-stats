@@ -22,7 +22,7 @@ export default function Popup({
         <Button
           name={'Back'}
           color={'orange'}
-          style={{ width: '100%' }}
+          full={true}
           callback={exit}
         />
       </div>

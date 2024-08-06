@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
-import './_styles/globals.css'
-import './_styles/colors.css'
+import './styles/globals.css'
+import './styles/colors.css'
 
 const balatroFont = localFont({
-  src: './_styles/m6x11plus.ttf',
+  src: './styles/m6x11plus.ttf',
 })
 
 export const metadata: Metadata = {
