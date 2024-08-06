@@ -12,10 +12,10 @@ import InputContainer from '../../inputs/InputContainer'
 import Select from '../../inputs/Select'
 import Search from '../../inputs/Search'
 import {
-  initalConsumables,
-  initalDecks,
-  initalJokers,
-  initalVouchers,
+  initialConsumables,
+  initialDecks,
+  initialJokers,
+  initialVouchers,
 } from '@/lib/cards/cards'
 import Grid from './Grid'
 import List from './List'
@@ -222,7 +222,7 @@ export default function Collection({ profile }: { profile: Profile }) {
     setSort(sorts[0])
   }
 
-  const jokers = initalJokers()
+  const jokers = initialJokers()
   Object.entries(profile.joker_usage).forEach(([joker, stats]) => {
     if (jokers[joker]) {
       jokers[joker].wins = stats.wins
@@ -231,7 +231,7 @@ export default function Collection({ profile }: { profile: Profile }) {
     }
   })
 
-  const decks = initalDecks()
+  const decks = initialDecks()
   Object.entries(profile.deck_usage).forEach(([deck, stats]) => {
     if (decks[deck]) {
       decks[deck].wins = stats.wins
@@ -239,14 +239,14 @@ export default function Collection({ profile }: { profile: Profile }) {
     }
   })
 
-  const consumables = initalConsumables()
+  const consumables = initialConsumables()
   Object.entries(profile.consumeable_usage).forEach(([card, stats]) => {
     if (consumables[card]) {
       consumables[card].count = stats.count
     }
   })
 
-  const vouchers = initalVouchers()
+  const vouchers = initialVouchers()
   Object.entries(profile.voucher_usage).forEach(([voucher, stats]) => {
     if (vouchers[voucher]) {
       vouchers[voucher].count = stats.count

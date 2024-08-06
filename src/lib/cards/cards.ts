@@ -21,7 +21,7 @@ import {
 } from './cardKeys'
 import { CardType } from '@/lib/types'
 
-function initalizeJoker(key: string): CardType {
+function initializeJoker(key: string): CardType {
   return {
     name: jokerNames[key],
     wins: {},
@@ -35,7 +35,7 @@ function initalizeJoker(key: string): CardType {
   }
 }
 
-function initalizeDeck(key: string): CardType {
+function initializeDeck(key: string): CardType {
   return {
     name: deckNames[key],
     wins: {},
@@ -45,7 +45,7 @@ function initalizeDeck(key: string): CardType {
   }
 }
 
-function initalizeConsumable(key: string): CardType {
+function initializeConsumable(key: string): CardType {
   const status = (() => {
     if (tarotKeys.includes(key)) {
       return 'Tarot'
@@ -68,7 +68,7 @@ function initalizeConsumable(key: string): CardType {
   }
 }
 
-function initalizeVouchers(key: string): CardType {
+function initializeVouchers(key: string): CardType {
   return {
     name: voucherNames[key],
     count: 0,
@@ -77,34 +77,34 @@ function initalizeVouchers(key: string): CardType {
   }
 }
 
-export const initalJokers = () => {
+export const initialJokers = () => {
   const jokers: Record<string, CardType> = {}
   jokerKeys.map((key) => {
-    jokers[key] = initalizeJoker(key)
+    jokers[key] = initializeJoker(key)
   })
   return jokers
 }
 
-export const initalDecks = () => {
+export const initialDecks = () => {
   const decks: Record<string, CardType> = {}
   deckKeys.map((key) => {
-    decks[key] = initalizeDeck(key)
+    decks[key] = initializeDeck(key)
   })
   return decks
 }
 
-export const initalConsumables = () => {
+export const initialConsumables = () => {
   const consumables: Record<string, CardType> = {}
   consumableKeys.map((key) => {
-    consumables[key] = initalizeConsumable(key)
+    consumables[key] = initializeConsumable(key)
   })
   return consumables
 }
 
-export const initalVouchers = () => {
+export const initialVouchers = () => {
   const vouchers: Record<string, CardType> = {}
   voucherKeys.map((key) => {
-    vouchers[key] = initalizeVouchers(key)
+    vouchers[key] = initializeVouchers(key)
   })
   return vouchers
 }

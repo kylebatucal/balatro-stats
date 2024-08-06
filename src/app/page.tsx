@@ -1,6 +1,6 @@
 'use client'
 
-import { initalizeSettings } from '@/lib/settings'
+import { initializeSettings } from '@/lib/settings'
 import { useEffect, useState } from 'react'
 import { useImmer } from 'use-immer'
 import useSound from 'use-sound'
@@ -13,7 +13,7 @@ import Footer from '@/components/sections/footer/Footer'
 import { settingsContext, soundContext } from '@/lib/context'
 
 export default function Page() {
-  // Initalize and update profile
+  // initialize and update profile
   const [profile, setProfile] = useState(initialProfile)
   const [saved, setSaved] = useState(false)
   useEffect(() => {
@@ -24,8 +24,8 @@ export default function Page() {
     }
   }, [setProfile])
 
-  // Initalize and update settings
-  const [settings, setSettings] = useImmer(initalizeSettings())
+  // initialize and update settings
+  const [settings, setSettings] = useImmer(initializeSettings())
   useEffect(() => {
     const savedSettings = localStorage.getItem('settings')
     if (savedSettings) {
@@ -40,7 +40,7 @@ export default function Page() {
     }
   }, [settings, setSettings])
 
-  // Initalize sounds
+  // initialize sounds
   // This prevents us creating a new sound function every time we create a component using a sound
   const [buttonSound] = useSound('/sounds/button.mp3', {
     volume: 0.3,

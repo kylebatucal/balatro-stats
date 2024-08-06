@@ -1,4 +1,4 @@
-export function initalizeSettings(): Record<
+export function initializeSettings(): Record<
   string,
   { label: string; enabled: boolean }
 > {
