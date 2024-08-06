@@ -7,7 +7,7 @@
   user-select: none;
 }
 
-.button:active .buttonTriangle {
+.buttonContainer:active .buttonTriangle {
   transform: translateY(var(--shadow-length));
   filter: none;
 }
