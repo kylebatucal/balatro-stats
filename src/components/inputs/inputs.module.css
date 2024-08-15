@@ -114,7 +114,7 @@
   z-index: 5;
 
   max-height: 15rem;
-  overflow: hidden;
+  overflow-y: scroll;
 
   /* transition: padding 100ms ease-in-out; */
 }
