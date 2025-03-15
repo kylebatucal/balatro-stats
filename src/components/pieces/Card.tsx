@@ -4,6 +4,7 @@ import { settingsContext, soundContext } from '@/lib/context'
 import Tooltip from './Tooltip'
 import { getHighestStake, sumStakes } from '@/lib/utils'
 import classNames from 'classnames/bind'
+import { jokerNames } from '@/lib/cards/cardMappings'
 
 function getStickerImage(sticker: number) {
   const stickerOffsets: Record<number, string> = {
@@ -61,10 +62,12 @@ export default function Card({
   const cx = classNames.bind(styles)
   const classes = cx({
     topImage: topImage,
-    legendary: !['Hologram', 'The Soul', '404'].includes(name),
+    legendary:
+      !['Hologram', 'The Soul'].includes(name) &&
+      Object.values(jokerNames).includes(name),
     hologram: name == 'Hologram',
     soul: name == 'The Soul',
-    undiscovered: name == '404',
+    undiscovered: !Object.values(jokerNames).includes(name),
   })
 
   let transform = []

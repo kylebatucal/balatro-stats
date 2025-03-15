@@ -19,12 +19,7 @@ export default function Popup({
 
       <div className={styles.popup}>
         {children}
-        <Button
-          name={'Back'}
-          color={'orange'}
-          full={true}
-          callback={exit}
-        />
+        <Button name={'Back'} color={'orange'} full={true} callback={exit} />
       </div>
     </>
   )

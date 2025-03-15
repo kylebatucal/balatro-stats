@@ -502,6 +502,7 @@ export const deckSprites: Record<string, string> = {
   b_anaglyph: '-200% -400%',
   b_plasma: '-400% -200%',
   b_erratic: '-200% -300%',
+  locked: '-400% 0',
 }
 
 export const consumableNames: Record<string, string> = {
@@ -616,6 +617,9 @@ export const consumableSprites: Record<string, string> = {
   c_cryptid: '-500% -500%',
   c_soul: '-200% -200%',
   c_black_hole: '-900% -300%',
+
+  undiscovered: '-600% -200%',
+  undiscovered_extra: '-600% -300%',
 }
 
 export const voucherNames: Record<string, string> = {
@@ -686,4 +690,6 @@ export const voucherSprites: Record<string, string> = {
   v_retcon: '-600% -300%',
   v_paint_brush: '-700% -200%',
   v_palette: '-700% -300%',
+  undiscovered: '-800% -200%',
+  undiscovered_extra: '-600% -300%',
 }

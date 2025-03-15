@@ -25,6 +25,7 @@ export default function Tooltip({
       case 'Tarot':
       case 'Planet':
       case 'Spectral':
+      case 'Consumable':
         return plural ? 'uses' : 'use'
       case 'Voucher':
         return plural ? 'redeems' : 'redeem'

@@ -19,25 +19,27 @@
   --Planet: #00a7ca;
   --Spectral: #2e76fd;
   --Voucher: #ff5611;
+
+  --Unknown: #5f7e85;
+  --Consumable: #5f7e85;
 }
 
 .red {
   background-color: var(--red);
 }
 
-.red:hover, 
-.red:active, 
+.red:hover,
+.red:active,
 .red:focus {
   background-color: #a02721;
 }
-
 
 .blue {
   background-color: var(--blue);
 }
 
-.blue:hover, 
-.blue:active, 
+.blue:hover,
+.blue:active,
 .blue:focus {
   background-color: #0057a1;
 }
@@ -46,8 +48,8 @@
   background-color: var(--orange);
 }
 
-.orange:hover, 
-.orange:active, 
+.orange:hover,
+.orange:active,
 .orange:focus {
   background-color: #a05b00;
 }
@@ -56,8 +58,8 @@
   background-color: var(--green);
 }
 
-.green:hover, 
-.green:active, 
+.green:hover,
+.green:active,
 .green:focus {
   background-color: #215f46;
 }

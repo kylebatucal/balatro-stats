@@ -21,31 +21,36 @@ import {
 } from './cardKeys'
 import { CardType } from '@/lib/types'
 
-function initializeJoker(key: string): CardType {
+export function initializeJoker(key: string): CardType {
   return {
-    name: jokerNames[key],
+    name: jokerNames[key] || key,
     wins: {},
     losses: {},
     count: 0,
-    image: `url(/images/cards/Jokers.png) ${jokerSprites[key]} / 1000% 1600%`,
-    topImage:
-      jokerExtraSprites[key] &&
-      `url(/images/cards/Jokers.png) ${jokerExtraSprites[key]} / 1000% 1600%`,
-    status: jokerRarity[key],
+    image: jokerSprites[key]
+      ? `url(/images/cards/Jokers.png) ${jokerSprites[key]} / 1000% 1600%`
+      : `url(/images/cards/Jokers.png) ${jokerSprites.undiscovered} / 1000%`,
+    topImage: jokerSprites[key]
+      ? jokerExtraSprites[key] &&
+        `url(/images/cards/Jokers.png) ${jokerExtraSprites[key]} / 1000% 1600%`
+      : `url(/images/cards/Enhancers.png) ${jokerExtraSprites.undiscovered} / 700% 500%`,
+    status: jokerRarity[key] ? jokerRarity[key] : 'Unknown',
   }
 }
 
-function initializeDeck(key: string): CardType {
+export function initializeDeck(key: string): CardType {
   return {
-    name: deckNames[key],
+    name: deckNames[key] || key,
     wins: {},
     losses: {},
-    image: `url(/images/cards/Enhancers.png) ${deckSprites[key]} / 700%`,
+    image: deckNames[key]
+      ? `url(/images/cards/Enhancers.png) ${deckSprites[key]} / 700%`
+      : `url(/images/cards/Enhancers.png) ${deckSprites.locked} / 700%`,
     status: 'Deck',
   }
 }
 
-function initializeConsumable(key: string): CardType {
+export function initializeConsumable(key: string): CardType {
   const status = (() => {
     if (tarotKeys.includes(key)) {
       return 'Tarot'
@@ -59,20 +64,30 @@ function initializeConsumable(key: string): CardType {
   })()
 
   return {
-    name: consumableNames[key],
+    name: consumableNames[key] || key,
     count: 0,
-    image: `url(/images/cards/Tarots.png) ${consumableSprites[key]} / 1000%`,
-    topImage:
-      key == 'c_soul' ? `url(/images/cards/Enhancers.png) 0 -100% / 700%` : '',
+    image: consumableSprites[key]
+      ? `url(/images/cards/Tarots.png) ${consumableSprites[key]} / 1000%`
+      : `url(/images/cards/Tarots.png) ${consumableSprites.undiscovered} / 1000%`,
+    topImage: consumableSprites[key]
+      ? key == 'c_soul'
+        ? `url(/images/cards/Enhancers.png) 0 -100% / 700%`
+        : ''
+      : `url(/images/cards/Enhancers.png) ${consumableSprites.undiscovered_extra} / 700%`,
     status: status,
   }
 }
 
-function initializeVouchers(key: string): CardType {
+export function initializeVouchers(key: string): CardType {
   return {
-    name: voucherNames[key],
+    name: voucherNames[key] || key,
     count: 0,
-    image: `url(/images/cards/Vouchers.png) ${voucherSprites[key]} / 900%`,
+    image: voucherNames[key]
+      ? `url(/images/cards/Vouchers.png) ${voucherSprites[key]} / 900%`
+      : `url(/images/cards/Vouchers.png) ${voucherSprites.undiscovered} / 900%`,
+    topImage: !voucherNames[key]
+      ? `url(/images/cards/Enhancers.png) ${voucherSprites.undiscovered_extra} / 700%`
+      : '',
     status: 'Voucher',
   }
 }

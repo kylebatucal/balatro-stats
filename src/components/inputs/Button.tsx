@@ -27,7 +27,7 @@ export default function Button({
 
   const cx = classNames.bind(styles)
   const buttonClasses = cx('button', {
-    full: full
+    full: full,
   })
   const insideClasses = cx('buttonInsides', color, {
     underline: underline,
@@ -51,10 +51,7 @@ export default function Button({
         }}
         disabled={disabled == undefined ? false : disabled}
       >
-        <div
-          className={insideClasses}
-          style={style}
-        >
+        <div className={insideClasses} style={style}>
           {name}
         </div>
       </button>

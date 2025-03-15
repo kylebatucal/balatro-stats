@@ -12,10 +12,14 @@ import InputContainer from '../../inputs/InputContainer'
 import Select from '../../inputs/Select'
 import Search from '../../inputs/Search'
 import {
-  initialConsumables,
-  initialDecks,
   initialJokers,
+  initialDecks,
+  initialConsumables,
   initialVouchers,
+  initializeJoker,
+  initializeDeck,
+  initializeConsumable,
+  initializeVouchers,
 } from '@/lib/cards/cards'
 import Grid from './Grid'
 import List from './List'
@@ -24,11 +28,7 @@ import Filters from '../../inputs/Filters'
 import { useImmer } from 'use-immer'
 import {
   baseVoucherNames,
-  consumableKeys,
-  deckKeys,
-  jokerKeys,
   upgradedVoucherNames,
-  voucherKeys,
 } from '../../../lib/cards/cardKeys'
 import { settingsContext } from '@/lib/context'
 
@@ -224,33 +224,37 @@ export default function Collection({ profile }: { profile: Profile }) {
 
   const jokers = initialJokers()
   Object.entries(profile.joker_usage).forEach(([joker, stats]) => {
-    if (jokers[joker]) {
-      jokers[joker].wins = stats.wins
-      jokers[joker].losses = stats.losses
-      jokers[joker].count = stats.count
+    if (!jokers[joker]) {
+      jokers[joker] = initializeJoker(joker)
     }
+    jokers[joker].wins = stats.wins
+    jokers[joker].losses = stats.losses
+    jokers[joker].count = stats.count
   })
 
   const decks = initialDecks()
   Object.entries(profile.deck_usage).forEach(([deck, stats]) => {
-    if (decks[deck]) {
-      decks[deck].wins = stats.wins
-      decks[deck].losses = stats.losses
+    if (!decks[deck]) {
+      decks[deck] = initializeDeck(deck)
     }
+    decks[deck].wins = stats.wins
+    decks[deck].losses = stats.losses
   })
 
   const consumables = initialConsumables()
   Object.entries(profile.consumeable_usage).forEach(([card, stats]) => {
-    if (consumables[card]) {
-      consumables[card].count = stats.count
+    if (!consumables[card]) {
+      consumables[card] = initializeConsumable(card)
     }
+    consumables[card].count = stats.count
   })
 
   const vouchers = initialVouchers()
   Object.entries(profile.voucher_usage).forEach(([voucher, stats]) => {
-    if (vouchers[voucher]) {
-      vouchers[voucher].count = stats.count
+    if (!vouchers[voucher]) {
+      vouchers[voucher] = initializeVouchers(voucher)
     }
+    vouchers[voucher].count = stats.count
   })
 
   const cards = (() => {

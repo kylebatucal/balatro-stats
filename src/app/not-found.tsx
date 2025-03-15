@@ -34,7 +34,7 @@ export default function NotFound() {
           topImage={joker.topImage}
           desc={'Not Found'}
         />
-        <Link href="/">Go home</Link>
+        <Link href="/">Go Back</Link>
       </div>
     </soundContext.Provider>
   )
