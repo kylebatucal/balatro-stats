@@ -2,11 +2,18 @@
 
 [balatrostats.com](https://www.balatrostats.com/)
 
-Supercharged web app of the stats menu in Balatro.
+View your stats in Balatro!
 
 - View all the stats the game tracks, including the hidden ones.
 - Track, sort, and graph your collection with various filters.
 - Share your stats through a saved image or [PLANNED] a URL.
+
+## What's New
+
+- 07/31/2024 - Launch
+- 03/15/2025 - Added support for custom cards and error handling
+
+Oops, it's been a while. I've been busy with real life and I lost interest in Balatro after trying to gold stake black deck, but slow progress is coming for V2. I am also working on another Balatro-related project that will probably come out first, so stay tuned.
 
 ## Running the app locally
 
