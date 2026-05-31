@@ -10,6 +10,7 @@ export function decompressJKR(data: ArrayBuffer) {
     .replace(/\["(.*?)"\]=/g, '"$1":')
     .replace(/\[(\d+)\]=/g, '"$1":')
     .replace(/,}/g, '}')
+    .replace(/\(Big and to_big\({"1":(\d+)}, 1\) or (\d+)\)/g, '$1') // hotfix for #1. not an issue in vanilla, one of their mods messes with the files
   return JSON.parse(formatted)
 }
 
